@@ -3,10 +3,14 @@ import { BASEURL } from '../utilities/constants'
  
 export const userApi = createApi({
   reducerPath: 'userApi',
-  baseQuery: fetchBaseQuery({ baseUrl: BASEURL }),
+  baseQuery: fetchBaseQuery({ baseUrl: `${BASEURL}` }),
   endpoints: (builder) => ({
     getUserData: builder.query({
-      query: () => `/users`,
+      query: ({ email,password }) => ({
+        url: `/users?email=${email}$password=${password}`,
+        method: 'GET',
+        
+      }),
     }),
   }),
 })

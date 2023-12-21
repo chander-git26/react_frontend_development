@@ -11,7 +11,7 @@ const SideContent = () => {
           Register Now <i className='bi animate-pulse font-bold bi-arrow-right'></i>
         </h1>
         <div className="div w-1/3 absolute right-0 -bottom-3 ">
-          <img src="https://static.vecteezy.com/system/resources/previews/006/230/322/large_2x/isometric-style-illustration-of-checking-valid-data-free-vector.jpg" alt="image" />
+          <img src="https://static.vecteezy.com/system/resources/previews/006/230/322/large_2x/isometric-style-illustration-of-checking-valid-data-free-vector.jpg" alt="Signup Banner" />
         </div>
     </div>
   )

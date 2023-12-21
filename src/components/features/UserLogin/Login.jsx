@@ -10,7 +10,7 @@ import { useGetUserDataQuery } from '../../../services/user';
 
 const Login = () => {
 
-const data = useGetUserDataQuery()
+const data = useGetUserDataQuery({email:'pavan@gmail.com',password:"Asdf@1234"})
 
 console.log(data);
 

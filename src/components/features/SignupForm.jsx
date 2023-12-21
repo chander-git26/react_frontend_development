@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Field, Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { passwordRegExp, phoneRegExp } from '../../utilities/constants';

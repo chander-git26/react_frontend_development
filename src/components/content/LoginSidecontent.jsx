@@ -21,7 +21,7 @@ const LoginSidecontent = () => {
         <i className="bi text-blue-700 bi-check-square-fill mr-2"></i> 1 Claim Settled  Per Minute
         </h1>
         <div className="div w-1/2 absolute right-0 -bottom-3 ">
-          <img src="https://media.istockphoto.com/id/1457308716/vector/family-health-care-and-life-insurance-concept-group-people-and-shield-protection-with.jpg?s=1024x1024&w=is&k=20&c=a3Ut4Aeo5-WVuWW6xjvgy-spnY0ZgQWUmPilfrNtChI=" alt="image" />
+          <img src="https://media.istockphoto.com/id/1457308716/vector/family-health-care-and-life-insurance-concept-group-people-and-shield-protection-with.jpg?s=1024x1024&w=is&k=20&c=a3Ut4Aeo5-WVuWW6xjvgy-spnY0ZgQWUmPilfrNtChI=" alt="Login Bannger" />
         </div>
     </div>
   )

@@ -10,7 +10,6 @@ import {
 import Login from './components/features/UserLogin/Login';
 import Mainbody from './components/Mainbody';
 import SignupForm from './components/features/SignupForm';
-import FetchApi from './components/FetchApi';
 import { store } from './store/store';
 import { Provider } from 'react-redux';
 
@@ -32,10 +31,6 @@ import { Provider } from 'react-redux';
             {
               path:'/',
               element:<SignupForm/>
-            },
-            {
-              path:'fetchapi',
-              element:<FetchApi/>
             }
           ]
         },
