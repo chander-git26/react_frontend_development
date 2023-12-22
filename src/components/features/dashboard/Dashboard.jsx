@@ -19,7 +19,7 @@ const Dashboard = () => {
         {/* <div className='h-full'>
             SideMenu
         </div> */}
-        <div className='h-full flex-1 '>
+        <div className='  flex-1 '>
            <CompleteDetails></CompleteDetails>
         </div>
         {/* <div className='h-full '>

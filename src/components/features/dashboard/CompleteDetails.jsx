@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import MultiStepProgressBar from './forms/MultiStepProgressBar/MultiStepProgressBar'
-import Logo from './forms/Logo/Logo'
+ 
 import PageOne from './forms/PageOne/PageOne'
 import PageTwo from './forms/PageTwo/PageTwo'
 import PageThree from './forms/PageThree/PageThree'
@@ -35,8 +35,8 @@ const CompleteDetails = () => {
 
 
   return (
-    <div className='flex flex-1 items-center justify-center gap-16 '>
-          
+    
+           <div className="flex flex-col justify-center items-center">
       <MultiStepProgressBar page={page} onPageNumberClick={nextPageNumber} />
       {
         {
@@ -46,9 +46,9 @@ const CompleteDetails = () => {
           pagefour: <PageFour />,
         }[page]
       }
-     
+    </div>
         
-        </div>
+       
   )
 }
 
