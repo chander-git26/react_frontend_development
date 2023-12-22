@@ -9,14 +9,13 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import { useDispatch, useSelector } from 'react-redux';
 import { addUserData } from './userSlice';
 import { inpLableSty,errorText, inputTextStyles2, inputTextStylesError } from '../../../utilities/styleclasses';
-
+import LoginSideconent from '../../content/LoginSidecontent'
 const Login = () => {
 
 
 const userdata = useSelector(state=>state.userdata.userinfo)  
 
  const [authUser,x] = useLazyGetUserDataQuery()
-
 
 
 const dispatch = useDispatch()
@@ -26,7 +25,7 @@ console.log(userdata);
  
     return (
         <div className='flex flex-1 items-center justify-center gap-16 '>
-     
+     <LoginSideconent/>
         {/* Form Section */}
         <div className='h-200px'>
           <div className='border px-6 py-3 rounded-2xl border-blue-100 shadow-blue-200 shadow-lg'>

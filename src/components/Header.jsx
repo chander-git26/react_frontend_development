@@ -34,8 +34,8 @@ function Header() {
                             </Link>
                         </div>
                             :
-                            <div>
-
+                            <div className='flex justify-center items-center gap-4'>
+                                <h1 >Hello Mr. <span className='font-bold'>{userstatus.firstName}</span></h1>
                             <button className={primarybtn} onClick={()=>{logoutHandler()}}>Logout</button>
                             </div>
 

@@ -54,7 +54,7 @@ useEffect(()=>{
                 email: 'k.viswa@gmail.com',
                 password: 'Asdf@1234',
                 phoneNumber: '9000090000',
-                confirmpassword: 'Asdf@1234',
+                confirm_password: 'Asdf@1234',
               }}
               validationSchema={Yup.object({
                 firstName: Yup.string()
@@ -69,14 +69,14 @@ useEffect(()=>{
                   passwordRegExp,
                   'Must contain at least 8 Characters, 1 Uppercase, 1 Lowercase, 1 Special Character, and 1 Number'
                 ),
-                confirmpassword: Yup.string().required('Please Re-enter the password').oneOf([Yup.ref('password'), null], 'Passwords must match'),
+                confirm_password: Yup.string().required('Please Re-enter the password').oneOf([Yup.ref('password'), null], 'Passwords must match'),
 
 
 
               })}
               onSubmit={async (values) => {
                 await new Promise((r) => setTimeout(r, 500));
-                delete values.confirmpassword
+                 
                
                 submitHandler(values);
               }}
