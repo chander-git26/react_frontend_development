@@ -1,16 +1,30 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Field, Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { passwordRegExp, phoneRegExp } from '../../utilities/constants';
 import { errorText, inpLableSty, inputTextStyles2, inputTextStylesError } from '../../utilities/styleclasses';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import "bootstrap-icons/font/bootstrap-icons.css";
 import SideContent from '../content/SideContent';
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 
 
 
 const SignupForm = () => {
+
+const userdata = useSelector(state=>state.userdata.userinfo)  
+const navigate = useNavigate()
+
+
+
+useEffect(()=>{
+  if(userdata){
+    navigate('/dashboard')
+    
+  }
+},[])
+
 
 
   const  submitHandler = async(body) =>{

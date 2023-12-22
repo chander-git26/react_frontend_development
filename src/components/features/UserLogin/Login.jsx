@@ -1,43 +1,51 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Field, Formik, Form } from 'formik';
 import * as Yup from 'yup';
-import { errorText, inpLableSty, inputTextStyles2, inputTextStylesError } from '../../../utilities/styleclasses';
-import { Link } from 'react-router-dom';
+ 
+import { Link, useNavigate } from 'react-router-dom';
 
 import "bootstrap-icons/font/bootstrap-icons.css";
-import LoginSidecontent from '../../content/LoginSidecontent';
-import { useGetUserDataQuery } from '../../../services/user';
+ import { useGetUserDataQuery, useLazyGetUserDataQuery } from '../../../services/userService';
+import { useDispatch, useSelector } from 'react-redux';
+import { addUserData } from './userSlice';
+import { inpLableSty,errorText, inputTextStyles2, inputTextStylesError } from '../../../utilities/styleclasses';
 
 const Login = () => {
 
-const data = useGetUserDataQuery({email:'pavan@gmail.com',password:"Asdf@1234"})
 
-console.log(data);
+const userdata = useSelector(state=>state.userdata.userinfo)  
+
+ const [authUser,x] = useLazyGetUserDataQuery()
 
 
+
+const dispatch = useDispatch()
+const navigate = useNavigate()
+console.log(userdata);
+
+ 
     return (
         <div className='flex flex-1 items-center justify-center gap-16 '>
-        <LoginSidecontent></LoginSidecontent>
+     
         {/* Form Section */}
         <div className='h-200px'>
           <div className='border px-6 py-3 rounded-2xl border-blue-100 shadow-blue-200 shadow-lg'>
 
             <Formik
               initialValues={{
-                username: '',
-                password: '',
+                email: 'pavan@gmail.com',
+                password: 'Asdf@1234',
               
               }}
               validationSchema={Yup.object({
-                username: Yup.string().required()
+                email: Yup.string().required()
       
 
               })}
               onSubmit={async (values) => {
-                await new Promise((r) => setTimeout(r, 500));
-               
-                alert(JSON.stringify(values, null, 2));
-                console.log(values)
+                await authUser(values).then(res=>dispatch(addUserData(res.data[0]))
+                )
+                navigate('/dashboard')
               }}
             >
               {formik => (
@@ -46,12 +54,12 @@ console.log(data);
                 
 
                     <div className=" flex flex-col  relative  border-b-gray-400">
-                      <label htmlFor="username" className={inpLableSty} >USERNAME</label>
-                      <Field id="username" name="username" className={formik.touched.username && formik.errors.username ? inputTextStylesError : inputTextStyles2} placeholder="Enter username" {...formik.getFieldProps('username')} />
-                      {formik.touched.username && formik.errors.username ? (
-                        <div className={errorText}><i class="bi bi-exclamation-circle"></i> {formik.errors.username}</div>
+                      <label htmlFor="email" className={inpLableSty} >USERNAME</label>
+                      <Field id="email" name="email" className={formik.touched.email && formik.errors.email ? inputTextStylesError : inputTextStyles2} placeholder="Enter Username" {...formik.getFieldProps('email')} />
+                      {formik.touched.email && formik.errors.email ? (
+                        <div className={errorText}><i class="bi bi-exclamation-circle"></i> {formik.errors.email}</div>
                       ) : null}
-                      {/* {formik.touched.username && !formik.errors.username ? (
+                      {/* {formik.touched.email && !formik.errors.email ? (
                         <div className={successText}><i class="bi bi-check-circle-fill"></i>  </div>
                       ) : null} */}
                     </div>

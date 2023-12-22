@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query'
-import { userApi } from '../services/user'
+import { userApi } from '../services/userService'
+import userReducer from'../components/features/UserLogin/userSlice'
+
 
 export const store = configureStore({
   reducer: {
- 
+    userdata:userReducer,
     [userApi.reducerPath]: userApi.reducer,
   },
  
