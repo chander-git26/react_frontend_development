@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import RightDashboard from './rightSection/RightDashboard'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import CompleteDetails from './CompleteDetails'
 
 const Dashboard = () => {
     const userdata = useSelector(state=>state.userdata.userinfo)
@@ -19,7 +20,7 @@ const Dashboard = () => {
             SideMenu
         </div> */}
         <div className='h-full flex-1 '>
-            Complete the profile
+           <CompleteDetails></CompleteDetails>
         </div>
         {/* <div className='h-full '>
             <RightDashboard/>
