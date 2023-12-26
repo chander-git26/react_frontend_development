@@ -26,7 +26,7 @@ const CompleteDetails = () => {
         setPage("pagethree");
         break;
       case "4":
-        alert("Ooops! Seems like you did not fill the form.");
+        setPage("pagefour");
         break;
       default:
         setPage("1");
