@@ -1,15 +1,15 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Field, Formik, Form } from 'formik';
 import * as Yup from 'yup';
  
 import { Link, useNavigate } from 'react-router-dom';
 
 import "bootstrap-icons/font/bootstrap-icons.css";
- import { useGetUserDataQuery, useLazyGetUserDataQuery } from '../../../services/userService';
+ import { useLazyGetUserDataQuery } from '../../../../services/userService';
 import { useDispatch, useSelector } from 'react-redux';
-import { addUserData } from './userSlice';
-import { inpLableSty,errorText, inputTextStyles2, inputTextStylesError } from '../../../utilities/styleclasses';
-import LoginSideconent from '../../content/LoginSidecontent'
+import { addUserData } from '../userSlice';
+import { inpLableSty,errorText, inputTextStyles2, inputTextStylesError } from '../../../../utilities/styleclasses';
+import LoginSideconent from '../../../content/LoginSidecontent'
 const Login = () => {
 
 

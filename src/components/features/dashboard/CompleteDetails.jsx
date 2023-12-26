@@ -35,7 +35,9 @@ const CompleteDetails = () => {
 
 
   return (
-    
+    <>
+    <div className=' flex-1 flex   justify-center items-center gap-6'>
+
            <div className="flex flex-col justify-center items-center">
       <MultiStepProgressBar page={page} onPageNumberClick={nextPageNumber} />
       {
@@ -46,7 +48,9 @@ const CompleteDetails = () => {
           pagefour: <PageFour />,
         }[page]
       }
+      </div>
     </div>
+      </>
         
        
   )

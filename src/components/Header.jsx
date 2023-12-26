@@ -2,11 +2,11 @@ import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { primarybtn } from '../utilities/styleclasses'
 import { useDispatch, useSelector } from 'react-redux'
-import { logoutUser } from './features/UserLogin/userSlice'
+import { logoutUser, selectLoggedInUser } from './features/auth/userSlice'
 
 function Header() {
 
-    const userstatus = useSelector(state => state.userdata.userinfo)
+    const userstatus = useSelector(selectLoggedInUser )
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const logoutHandler = () =>{
@@ -35,7 +35,6 @@ function Header() {
                         </div>
                             :
                             <div className='flex justify-center items-center gap-4'>
-                                <h1 >Hello Mr. <span className='font-bold'>{userstatus.firstName}</span></h1>
                             <button className={primarybtn} onClick={()=>{logoutHandler()}}>Logout</button>
                             </div>
 

@@ -19,6 +19,7 @@ export const userdataSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
+export const selectLoggedInUser = (state) => state.userdata.userinfo;
 export const { addUserData, logoutUser } = userdataSlice.actions
 
 export default userdataSlice.reducer

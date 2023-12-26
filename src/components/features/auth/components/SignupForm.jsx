@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react'
 import { Field, Formik, Form } from 'formik';
 import * as Yup from 'yup';
-import { passwordRegExp, phoneRegExp } from '../../utilities/constants';
-import { errorText, inpLableSty, inputTextStyles2, inputTextStylesError } from '../../utilities/styleclasses';
+import { passwordRegExp, phoneRegExp } from '../../../../utilities/constants';
+import { errorText, inpLableSty, inputTextStyles2, inputTextStylesError } from '../../../../utilities/styleclasses';
 import { Link, useNavigate } from 'react-router-dom';
 import "bootstrap-icons/font/bootstrap-icons.css";
-import SideContent from '../content/SideContent';
+import SideContent from '../../../content/SideContent';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 
