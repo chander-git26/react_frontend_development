@@ -48,11 +48,6 @@ const PageFour = ({ onButtonClick }) => {
             {formik => (
               <Form className='  flex flex-col p-5  gap-8'>
                 <h1 className='text-center text-xl font-bold border-b-2 pb-2 self-center px-4 border-b-blue-600'>Medical Details</h1>
-
-                
-                
-
-               
 							  
 							  
                 <div className=" flex flex-col  relative  border-b-gray-400">
@@ -77,16 +72,6 @@ const PageFour = ({ onButtonClick }) => {
 
                   </div>
 
-
-
-                  
-
-
-
-
-
-            
-            
 
             <div className="flex-1">
                     <div className=" flex flex-col  relative  border-b-gray-400">
