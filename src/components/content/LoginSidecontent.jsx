@@ -15,7 +15,7 @@ const LoginSidecontent = () => {
         <i className="bi text-blue-700 bi-check-square-fill mr-2"></i> Upto ₹75,000 TAX BENIFIT
         </h1>
         <h1 className='  w-auto  font-semibold text-sm'>
-        <i className="bi text-blue-700 bi-check-square-fill mr-2"></i> Nearly 10,000 Cashless Hospitala Network
+        <i className="bi text-blue-700 bi-check-square-fill mr-2"></i> Nearly 10,000 Cashless Hospitals Network
         </h1>
         <h1 className='  w-auto  font-semibold text-sm'>
         <i className="bi text-blue-700 bi-check-square-fill mr-2"></i> 1 Claim Settled  Per Minute
