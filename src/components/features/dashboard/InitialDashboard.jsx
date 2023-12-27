@@ -29,7 +29,7 @@ const InitialDashboard = () => {
                 <p className='font-bold text-lg'>Complete your Profile</p>
 
 
-                <Link to={'/fillform'} className={primarybtn + ' text-center'}>Fill your Details</Link>
+                <Link to={'/fillform'} className={primarybtn + ' text-center'}> NOW {' >>'}</Link>
             </div>
             {/* <div className='absolute -bottom-  '>
 

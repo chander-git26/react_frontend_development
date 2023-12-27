@@ -22,7 +22,7 @@
 //     annual_income: '',
 
 //   },
-//   bussiness:{
+//   business:{
 //     company_name: '',
 //     spare_amount: '',
 //     annual_income: '',
@@ -43,11 +43,11 @@
 //                   annual_income:  Yup.string().required(),
 //                   }),
 //               }),
-//               bussiness: Yup.object().shape().when('sourse_of_income', {
-//                 is: (sourse_of_income)=>sourse_of_income==='bussiness',
+//               business: Yup.object().shape().when('sourse_of_income', {
+//                 is: (sourse_of_income)=>sourse_of_income==='business',
 //                 then:()=> Yup.object({
-//                   bussiness_name: Yup.string().required(),
-//                   bussiness_type: Yup.string().required(),
+//                   business_name: Yup.string().required(),
+//                   business_type: Yup.string().required(),
 //                   annual_revenue:  Yup.string().required(),
 //                   gst_number: Yup.number().required(),
 //                   spare_amount: Yup.number().required(),
@@ -55,8 +55,8 @@
 //               })
 //                 // company  _name: Yup.string().when('sourse_of_income',{is:'employment',then:Yup.string().required()}),
 
-//               // bussiness_name: Yup.string().required(),
-//               // bussiness_type: Yup.string().required(),
+//               // business_name: Yup.string().required(),
+//               // business_type: Yup.string().required(),
 //               // annual_revenue: Yup.number().required(),
 //               // spare_amount: Yup.number().required(),
 //               // gst_number: Yup.number().required(),
@@ -77,7 +77,7 @@
 //                   <Field id="sourse_of_income" name="sourse_of_income" as='select' value={formik.values.sourse_of_income} className={formik.touched.sourse_of_income && formik.errors.sourse_of_income ? inputTextStylesError : inputTextStyles2} placeholder="Enter Your sourse_of_income" {...formik.getFieldProps('sourse_of_income')} >
 
 //                     <option disabled value="">Select sourse of income</option>
-//                     <option value="bussiness">Bussiness</option>
+//                     <option value="business">business</option>
 //                     <option value="employment">Employment</option>
 
 //                   </Field>
@@ -88,13 +88,13 @@
 //                 </div>
 
 //                 {
-//                   formik.values.sourse_of_income === 'bussiness' && (
+//                   formik.values.sourse_of_income === 'business' && (
 //                     <>
 //                       <div className=" flex flex-col  relative  border-b-gray-400">
-//                         <label htmlFor="bussiness_name" className={inpLableSty} >Business name</label>
-//                         <Field id="bussiness_name" name="bussiness_name" value={formik.values.bussiness_name} className={formik.touched.bussiness_name && formik.errors.bussiness_name ? inputTextStylesError : inputTextStyles2} placeholder="Enter Your Company name" {...formik.getFieldProps('bussiness_name')} />
-//                         {formik.touched.bussiness_name && formik.errors.bussiness_name ? (
-//                           <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors.bussiness_name}</div>
+//                         <label htmlFor="business_name" className={inpLableSty} >Business name</label>
+//                         <Field id="business_name" name="business_name" value={formik.values.business_name} className={formik.touched.business_name && formik.errors.business_name ? inputTextStylesError : inputTextStyles2} placeholder="Enter Your Company name" {...formik.getFieldProps('business_name')} />
+//                         {formik.touched.business_name && formik.errors.business_name ? (
+//                           <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors.business_name}</div>
 //                         ) : null}
 
 //                       </div>
@@ -115,17 +115,17 @@
 
 //                       </div>
                       // <div className=" flex flex-col  relative  border-b-gray-400">
-                      //   <label htmlFor="bussiness_type" className={inpLableSty} >Height</label>
-                      //   <Field id="bussiness_type" name="bussiness_type" as='select' value={formik.values.bussiness_type} className={formik.touched.bussiness_type && formik.errors.bussiness_type ? inputTextStylesError : inputTextStyles2} placeholder="Enter Your City" {...formik.getFieldProps('bussiness_type')} >
+                      //   <label htmlFor="business_type" className={inpLableSty} >Height</label>
+                      //   <Field id="business_type" name="business_type" as='select' value={formik.values.business_type} className={formik.touched.business_type && formik.errors.business_type ? inputTextStylesError : inputTextStyles2} placeholder="Enter Your City" {...formik.getFieldProps('business_type')} >
 
-                      //     <option disabled value="">Select Bussiness type</option>
+                      //     <option disabled value="">Select business type</option>
                       //     <option value="privatelimited">Private Limited</option>
                       //     <option value="llp">LLP</option>
                       //     <option value="propritorship">Propritorship</option>
                       //     <option value="corporation">Corporation</option>
 
                       //   </Field>
-                      //   {formik.touched.bussiness_type && formik.errors.bussiness_type ? (
+                      //   {formik.touched.business_type && formik.errors.business_type ? (
                       //     <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors.weight}</div>
                       //   ) : null}
                       // </div>
@@ -192,12 +192,12 @@ const PageTwo = ({ onButtonClick }) => {
               profession: {
                 company_name: '',
                 annual_income:'',
-                bussiness_name: '',
-                bussiness_type: '',
+                business_name: '',
+                business_type: '',
                 gst_number: '',
-                bussiness_annual_revenue: '',
+                business_annual_revenue: '',
                 employment_spare_amount: '',
-                bussiness_spare_amount: '',
+                business_spare_amount: '',
               }
             }}
 
@@ -205,21 +205,21 @@ const PageTwo = ({ onButtonClick }) => {
             validationSchema={Yup.object({
               sourse_of_income: Yup.string().required(),
               profession: Yup.object().when('sourse_of_income', {
-                is: (sourse_of_income) => sourse_of_income === 'bussiness',
+                is: (sourse_of_income) => sourse_of_income === 'business',
                 then: () => Yup.object({
-                  bussiness_name: Yup.string().required("Bussiness name is required"),
-                  bussiness_annual_revenue: Yup.number().required(),
-                  bussiness_type: Yup.string().required(),
-                  bussiness_spare_amount: Yup.number().required(),
-                  gst_number: Yup.number().required(),
+                  business_name: Yup.string().required("Business name is required"),
+                  business_annual_revenue: Yup.number().required('Annual revenue is required'),
+                  business_type: Yup.string().required('Business type is required'),
+                  business_spare_amount: Yup.number().required('Spare Amount is required'),
+                  gst_number: Yup.number().required('GST Number is required'),
                 }),
 
               }).when('sourse_of_income', {
                 is: (sourse_of_income) => sourse_of_income === 'employment',
                 then: () => Yup.object({
-                  company_name: Yup.string().required(),
-                  employment_spare_amount: Yup.string().required(),
-                  annual_income:  Yup.string().required(),
+                  company_name: Yup.string().required('Company name is required'),
+                  employment_spare_amount: Yup.string().required('Montly Spare amount is required'),
+                  annual_income:  Yup.string().required("Annual income is required"),
 
                 })
               }),
@@ -236,13 +236,13 @@ const PageTwo = ({ onButtonClick }) => {
                 alert(JSON.stringify(temp))
                 onButtonClick("pagethree")
               }
-              if(values.sourse_of_income==="bussiness"){
+              if(values.sourse_of_income==="business"){
                 const temp = {
                   sourse_of_income:values.sourse_of_income,
-                  bussiness_name: values.profession.bussiness_name,
-                  bussiness_annual_revenue:values.profession.bussiness_annual_revenue,
-                  bussiness_type: values.profession.bussiness_type,
-                  bussiness_spare_amount: values.profession.bussiness_spare_amount,
+                  business_name: values.profession.business_name,
+                  business_annual_revenue:values.profession.business_annual_revenue,
+                  business_type: values.profession.business_type,
+                  business_spare_amount: values.profession.business_spare_amount,
                   gst_number: values.profession.gst_number
                 }
                 alert(JSON.stringify(temp))
@@ -261,8 +261,8 @@ const PageTwo = ({ onButtonClick }) => {
                   <label htmlFor="sourse_of_income" className={inpLableSty} >Source of Income</label>
                   <Field id="sourse_of_income" name="sourse_of_income" as='select' value={formik.values.sourse_of_income} className={formik.touched.sourse_of_income && formik.errors.sourse_of_income ? inputTextStylesError : inputTextStyles2} placeholder="Enter Your sourse_of_income" {...formik.getFieldProps('sourse_of_income')} >
 
-                    <option disabled value="">Select sourse of income</option>
-                    <option value="bussiness">Bussiness</option>
+                    <option disabled value="">Select source of income</option>
+                    <option value="business">Business</option>
                     <option value="employment">Employment</option>
 
                   </Field>
@@ -275,57 +275,57 @@ const PageTwo = ({ onButtonClick }) => {
                 </div>
 
                 {
-                  formik.values.sourse_of_income === 'bussiness' && (
+                  formik.values.sourse_of_income === 'business' && (
                     <>
                       <div className=" flex flex-col  relative  border-b-gray-400">
-                        <label htmlFor="profession.bussiness_name" className={inpLableSty} >Bussiness Name</label>
-                        <Field id="profession.bussiness_name" name="profession.bussiness_name" value={formik.values.profession.bussiness_name}
-                          className={formik.touched?.profession?.bussiness_name && formik.errors?.profession?.bussiness_name ? inputTextStylesError : inputTextStyles2}
-                          placeholder="Enter Your Bussiness name" {...formik.getFieldProps('profession.bussiness_name')} />
+                        <label htmlFor="profession.business_name" className={inpLableSty} >Business Name</label>
+                        <Field id="profession.business_name" name="profession.business_name" value={formik.values.profession.business_name}
+                          className={formik.touched?.profession?.business_name && formik.errors?.profession?.business_name ? inputTextStylesError : inputTextStyles2}
+                          placeholder="Enter Your Business name" {...formik.getFieldProps('profession.business_name')} />
 
-                        {formik.touched?.profession?.bussiness_name && formik.errors?.profession?.bussiness_name ? (
-                          <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors?.profession?.bussiness_name}</div>
+                        {formik.touched?.profession?.business_name && formik.errors?.profession?.business_name ? (
+                          <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors?.profession?.business_name}</div>
                         ) : null}
                       </div>
 
                       <div className=" flex flex-col  relative  border-b-gray-400">
-                        <label htmlFor="bussiness_annual_revenue" className={inpLableSty} >Annual Revenue</label>
-                        <Field id="bussiness_annual_revenue" name="profession.bussiness_annual_revenue" value={formik.values.profession.bussiness_annual_revenue} className={formik.touched?.profession?.bussiness_annual_revenue && formik.errors?.profession?.bussiness_annual_revenue ? inputTextStylesError : inputTextStyles2} placeholder="Enter Your Company name" {...formik.getFieldProps('profession.bussiness_annual_revenue')} />
-                        {formik.touched?.profession?.bussiness_annual_revenue && formik.errors?.profession?.bussiness_annual_revenue ? (
-                          <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors?.profession?.bussiness_annual_revenue}</div>
+                        <label htmlFor="business_annual_revenue" className={inpLableSty} >Annual Revenue</label>
+                        <Field id="business_annual_revenue" name="profession.business_annual_revenue" value={formik.values.profession.business_annual_revenue} className={formik.touched?.profession?.business_annual_revenue && formik.errors?.profession?.business_annual_revenue ? inputTextStylesError : inputTextStyles2} placeholder="Enter Your Annual revenue" {...formik.getFieldProps('profession.business_annual_revenue')} />
+                        {formik.touched?.profession?.business_annual_revenue && formik.errors?.profession?.business_annual_revenue ? (
+                          <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors?.profession?.business_annual_revenue}</div>
                         ) : null}
 
                       </div>
 
                       <div className=" flex flex-col  relative  border-b-gray-400">
                         <label htmlFor="gst_number" className={inpLableSty} >GST number</label>
-                        <Field id="gst_number" name="profession.gst_number" value={formik.values.profession?.gst_number} className={formik.touched.profession?.gst_number && formik.errors.profession?.gst_number ? inputTextStylesError : inputTextStyles2} placeholder="Enter Your Company name" {...formik.getFieldProps('profession.gst_number')} />
+                        <Field id="gst_number" name="profession.gst_number" value={formik.values.profession?.gst_number} className={formik.touched.profession?.gst_number && formik.errors.profession?.gst_number ? inputTextStylesError : inputTextStyles2} placeholder="Enter Your Company GST number" {...formik.getFieldProps('profession.gst_number')} />
                         {formik.touched.profession?.gst_number && formik.errors.profession?.gst_number ? (
                           <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors.profession?.gst_number}</div>
                         ) : null}
 
                       </div>
                       <div className=" flex flex-col  relative  border-b-gray-400">
-                        <label htmlFor="bussiness_type" className={inpLableSty} >Business Type</label>
-                        <Field id="bussiness_type" name="profession.bussiness_type" as='select' value={formik.values.profession?.bussiness_type} className={formik.touched.profession?.bussiness_type && formik.errors.profession?.bussiness_type ? inputTextStylesError : inputTextStyles2} placeholder="Enter Your City" {...formik.getFieldProps('profession.bussiness_type')} >
+                        <label htmlFor="business_type" className={inpLableSty} >Business Type</label>
+                        <Field id="business_type" name="profession.business_type" as='select' value={formik.values.profession?.business_type} className={formik.touched.profession?.business_type && formik.errors.profession?.business_type ? inputTextStylesError : inputTextStyles2} placeholder="Enter Your City" {...formik.getFieldProps('profession.business_type')} >
 
-                          <option disabled value="">Select Bussiness type</option>
+                          <option disabled value="">Select Business type</option>
                           <option value="privatelimited">Private Limited</option>
                           <option value="llp">LLP</option>
                           <option value="propritorship">Propritorship</option>
                           <option value="corporation">Corporation</option>
 
                         </Field>
-                        {formik.touched.profession?.bussiness_type && formik.errors.profession?.bussiness_type ? (
+                        {formik.touched.profession?.business_type && formik.errors.profession?.business_type ? (
                           <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors.weight}</div>
                         ) : null}
                       </div>
 
                       <div className=" flex flex-col  relative  border-b-gray-400">
-                        <label htmlFor="bussiness_spare_amount" className={inpLableSty} >Spare Amount</label>
-                        <Field id="bussiness_spare_amount" name="bussiness_spare_amount" value={formik.values.profession.bussiness_spare_amount} className={formik.touched.profession?.bussiness_spare_amount && formik.errors.profession?.bussiness_spare_amount ? inputTextStylesError : inputTextStyles2} placeholder="Enter your annual Spare Amount" {...formik.getFieldProps('profession.bussiness_spare_amount')} />
-                        {formik.touched.profession?.bussiness_spare_amount && formik.errors.profession?.bussiness_spare_amount ? (
-                          <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors.profession?.bussiness_spare_amount}</div>
+                        <label htmlFor="business_spare_amount" className={inpLableSty} >Spare Amount</label>
+                        <Field id="business_spare_amount" name="business_spare_amount" value={formik.values.profession.business_spare_amount} className={formik.touched.profession?.business_spare_amount && formik.errors.profession?.business_spare_amount ? inputTextStylesError : inputTextStyles2} placeholder="Enter your monthly Spare Amount" {...formik.getFieldProps('profession.business_spare_amount')} />
+                        {formik.touched.profession?.business_spare_amount && formik.errors.profession?.business_spare_amount ? (
+                          <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors.profession?.business_spare_amount}</div>
                         ) : null}
 
                       </div>
@@ -349,7 +349,7 @@ const PageTwo = ({ onButtonClick }) => {
 
                       <div className=" flex flex-col  relative  border-b-gray-400">
                         <label htmlFor="employment_spare_amount" className={inpLableSty} >Spare Amount</label>
-                        <Field id="employment_spare_amount" name="employment_spare_amount" value={formik.values.profession.employment_spare_amount} className={formik.touched.profession?.employment_spare_amount && formik.errors.profession?.employment_spare_amount ? inputTextStylesError : inputTextStyles2} placeholder="Enter your annual Spare Amount" {...formik.getFieldProps('profession.employment_spare_amount')} />
+                        <Field id="employment_spare_amount" name="employment_spare_amount" value={formik.values.profession.employment_spare_amount} className={formik.touched.profession?.employment_spare_amount && formik.errors.profession?.employment_spare_amount ? inputTextStylesError : inputTextStyles2} placeholder="Enter your monthly Spare Amount" {...formik.getFieldProps('profession.employment_spare_amount')} />
                         {formik.touched.profession?.employment_spare_amount && formik.errors.profession?.employment_spare_amount ? (
                           <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors.profession?.employment_spare_amount}</div>
                         ) : null}
@@ -357,7 +357,7 @@ const PageTwo = ({ onButtonClick }) => {
                       </div>
                       <div className=" flex flex-col  relative  border-b-gray-400">
                         <label htmlFor="annual_income" className={inpLableSty} >Annual Income</label>
-                        <Field id="annual_income" name="profession.annual_income" value={formik.values.profession.annual_income} className={formik.touched?.profession?.annual_income && formik.errors?.profession?.annual_income ? inputTextStylesError : inputTextStyles2} placeholder="Enter Your Company name" {...formik.getFieldProps('profession.annual_income')} />
+                        <Field id="annual_income" name="profession.annual_income" value={formik.values.profession.annual_income} className={formik.touched?.profession?.annual_income && formik.errors?.profession?.annual_income ? inputTextStylesError : inputTextStyles2} placeholder="Enter Your Annual Income" {...formik.getFieldProps('profession.annual_income')} />
                         {formik.touched?.profession?.annual_income && formik.errors?.profession?.annual_income ? (
                           <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors?.profession?.annual_income}</div>
                         ) : null}
