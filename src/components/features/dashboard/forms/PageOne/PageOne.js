@@ -105,8 +105,8 @@ const PageOne = ({ onButtonClick }) => {
 
 
                       <div id="my-radio-group" className={inpLableSty}>Date of Birth</div>
-                      <Field name="date_of_birth"    {...formik.getFieldProps('date_of_birth')}>
-                        {({ field, form }) => (
+                      <Field name="date_of_birth"  type='date'   className={formik.touched.date_of_birth && formik.errors.date_of_birth ? inputTextStylesError : inputTextStyles2}  {...formik.getFieldProps('date_of_birth')}>
+                        {/* {({ field, form }) => (
                           <DatePicker
                             className={formik.touched.address && formik.errors.address ? inputTextStylesError + ' w-full' : inputTextStyles2 + ' w-full'}
                             id="date"
@@ -117,8 +117,9 @@ const PageOne = ({ onButtonClick }) => {
                             icon={calIcon}
                             onChange={(date) => form.setFieldValue(field.name, date)}
                           />
-                        )}
+                        )} */}
                       </Field>
+                      {/* <input type="date"></input> */}
                       {formik.touched.date_of_birth && formik.errors.date_of_birth ? (
                         <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors.date_of_birth}</div>
                       ) : null}
