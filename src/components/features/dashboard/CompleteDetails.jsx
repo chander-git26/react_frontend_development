@@ -38,7 +38,7 @@ const CompleteDetails = () => {
     <>
     <div className=' flex-1 flex   justify-center items-center gap-6'>
 
-           <div className="flex flex-col justify-center items-center">
+           <div className="flex flex-col justify-center gap-8   items-center">
       <MultiStepProgressBar page={page} onPageNumberClick={nextPageNumber} />
       {
         {

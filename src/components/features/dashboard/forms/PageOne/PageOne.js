@@ -46,7 +46,7 @@ const PageOne = ({ onButtonClick }) => {
               city: Yup.string()
                 .required(),
               height: Yup.string()
-                .required(),
+                .required("Required"),
               marital_status: Yup.string()
                 .required(),
               weight: Yup.number("Must be a number type").min(30).max(149.9).required(),
@@ -106,20 +106,9 @@ const PageOne = ({ onButtonClick }) => {
 
                       <div id="my-radio-group" className={inpLableSty}>Date of Birth</div>
                       <Field name="date_of_birth"  type='date'   className={formik.touched.date_of_birth && formik.errors.date_of_birth ? inputTextStylesError : inputTextStyles2}  {...formik.getFieldProps('date_of_birth')}>
-                        {/* {({ field, form }) => (
-                          <DatePicker
-                            className={formik.touched.address && formik.errors.address ? inputTextStylesError + ' w-full' : inputTextStyles2 + ' w-full'}
-                            id="date"
-                            {...field}
-                            selected={field.value}
-                            dateFormat="dd/MM/yyyy"
-                            showIcon
-                            icon={calIcon}
-                            onChange={(date) => form.setFieldValue(field.name, date)}
-                          />
-                        )} */}
+               
                       </Field>
-                      {/* <input type="date"></input> */}
+                
                       {formik.touched.date_of_birth && formik.errors.date_of_birth ? (
                         <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors.date_of_birth}</div>
                       ) : null}
@@ -147,26 +136,7 @@ const PageOne = ({ onButtonClick }) => {
 
                     </div>
 
-                    {/* <div className=" flex flex-col  relative  border-b-gray-400">
-                      <label htmlFor="blood_group" className={inpLableSty} >Blood Group</label>
-                      <Field id="blood_group" name="blood_group" as='select' value={formik.values.blood_group} className={formik.touched.blood_group && formik.errors.blood_group ? inputTextStylesError : inputTextStyles2} placeholder="Enter Your City" {...formik.getFieldProps('blood_group')} >
-
-                        <option disabled value="">Select Blood group</option>
-                        <option value="a+">A+</option>
-                        <option value="b+">B+</option>
-                        <option value="o+">O+</option>
-                        <option value="ab+">AB+</option>
-                        <option value="a-">A-</option>
-                        <option value="b-">B-</option>
-                        <option value="o-">O-</option>
-                        <option value="ab-">AB-</option>
-
-                      </Field>
-                      {formik.touched.blood_group && formik.errors.blood_group ? (
-                        <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors.blood_group}</div>
-                      ) : null}
-
-                    </div> */}
+               
                     <div className="flex gap-3">
 
                       <div className=" flex flex-col  relative  border-b-gray-400">
@@ -337,7 +307,7 @@ const PageOne = ({ onButtonClick }) => {
 
                 </div>
 
-                <button type="submit" className='border border-blue-400 px-5 py-2 mt-5 rounded-full hover:shadow-lg   hover:shadow-blue-200 hover:bg-blue-700 transition-colors bg-blue-600 text-sm font-semibold text-white self-center '>Next</button>
+                <button type="submit" className='border border-blue-400 px-5 py-2 mt-5 rounded-full hover:shadow-lg   hover:shadow-blue-200 hover:bg-blue-700 transition-colors bg-blue-600 text-sm font-semibold text-white self-center '>Save</button>
               </Form>)}
           </Formik>
         </div>

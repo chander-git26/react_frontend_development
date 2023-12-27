@@ -1,16 +1,17 @@
 import React from "react";
 import "./PageThree.css";
-import {  Formik, Form} from 'formik';
+import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
+import { inpLableSty, inputTextStyles2 } from "../../../../../utilities/styleclasses";
 
 
 
 
 
-  const PageThree = ({ onButtonClick }) => {
-    const showDetails = (type, value, formik) => {
-      formik.setFieldValue(type, value);
-    };
+const PageThree = ({ onButtonClick }) => {
+  const showDetails = (type, value, formik) => {
+    formik.setFieldValue(type, value);
+  };
 
 
   return (
@@ -22,7 +23,7 @@ import * as Yup from 'yup';
           <Formik
             initialValues={{
 
-             
+
               showFatherDetails: false,
               showMotherDetails: false,
               showSpouseDetails: false,
@@ -39,25 +40,25 @@ import * as Yup from 'yup';
               others_name: '',
               others_age: '',
               others_occupation: '',
-              
+
 
             }}
             validationSchema={Yup.object({
-              
-                father_name: Yup.string(),              
-                father_age: Yup.string(),
-                father_occupation: Yup.string(),
-                mother_name: Yup.string(),              
-                mother_age: Yup.string(),
-                mother_occupation: Yup.string(),
-                spouse_name: Yup.string(),              
-                spouse_age: Yup.string(),
-                spouse_occupation: Yup.string(),
-                others_name: Yup.string(),              
-                others_age: Yup.string(),
-                others_occupation: Yup.string(),
-                
-              
+
+              father_name: Yup.string(),
+              father_age: Yup.string(),
+              father_occupation: Yup.string(),
+              mother_name: Yup.string(),
+              mother_age: Yup.string(),
+              mother_occupation: Yup.string(),
+              spouse_name: Yup.string(),
+              spouse_age: Yup.string(),
+              spouse_occupation: Yup.string(),
+              others_name: Yup.string(),
+              others_age: Yup.string(),
+              others_occupation: Yup.string(),
+
+
 
             })}
             onSubmit={async (values) => {
@@ -72,139 +73,140 @@ import * as Yup from 'yup';
                   Family Details
                 </h1>
 
-                
-                
-
-               
-							  
-							  
-             
-
-
-                  
 
 
 
 
 
-            
-            
-
-<form onSubmit={formik.handleSubmit}>
-      <div >
-      <div className="labelel">
-                  <div>
-                    <label htmlFor="">Select Your Nominees</label>
+                <form onSubmit={formik.handleSubmit}>
+                  <div >
+                    <div className="labelel">
+                      <div>
+                        <label htmlFor="">Select Your Nominees</label>
+                      </div>
+                      <div className="checkel">
+                        {['Father', 'Mother', 'Spouse', 'Other'].map((relationship) => (
+                          <label key={relationship} className={inpLableSty} htmlFor={`show${relationship}Details`}>
+                            <input
+                              type="checkbox"
+                              id={`show${relationship}Details`}
+                              name={`show${relationship}Details`}
+                              onChange={() => showDetails(`show${relationship}Details`, !formik.values[`show${relationship}Details`], formik)}
+                              className="option"
+                            />
+                            {relationship}
+                          </label>
+                        ))}
+                      </div>
+                    </div>
                   </div>
-                  <div className="checkel">
-                    {['Father', 'Mother', 'Spouse', 'Other'].map((relationship) => (
-                      <label key={relationship} className="" htmlFor={`show${relationship}Details`}>
-                        <input
-                          type="checkbox"
-                          id={`show${relationship}Details`}
-                          name={`show${relationship}Details`}
-                          onChange={() => showDetails(`show${relationship}Details`, !formik.values[`show${relationship}Details`], formik)}
-                          className="option"
-                        />
-                        {relationship}
-                      </label>
-                    ))}
+
+
+
+
+                </form>
+
+
+                {['Father', 'Mother', 'Spouse', 'Other'].map((relationship) => (
+                  <div key={`${relationship.toLowerCase()}Details`} >
+                    {formik.values[`show${relationship}Details`] && (
+                      <>
+                      <h1>{relationship}</h1>
+                      <ul className=" flex flex-col gap-5" >
+                        <li>
+                          <label htmlFor={`${relationship.toLowerCase()}Name`}
+                            className={inpLableSty}
+                          >
+
+                           Name
+                          </label>
+                          <input
+
+                            type="text"
+                            className={inputTextStyles2+' ml-3'}
+
+                            id={`${relationship.toLowerCase()}Name`}
+                            name={`${relationship.toLowerCase()}Name`}
+                            onChange={formik.handleChange}
+                            value={formik.values[`${relationship.toLowerCase()}Name`]}
+                            required
+                          />
+                        </li>
+
+
+
+                        <li>
+                          <label htmlFor={`${relationship.toLowerCase()}Name`}
+                            className={inpLableSty} >
+                            Age
+                          </label>
+                          <input
+                            type="text"
+                            className={inputTextStyles2+' ml-3'}
+
+
+                            id={`${relationship.toLowerCase()}Age`}
+                            age={`${relationship.toLowerCase()}Age`}
+                            onChange={formik.handleChange}
+                            value={formik.values[`${relationship.toLowerCase()}Age`]}
+                            required
+                          />
+                        </li>
+
+                        <li>
+                          <label htmlFor={`${relationship.toLowerCase()}Occupation`}
+                            className={inpLableSty} >
+                            Occupation 
+                          </label>
+                          <input
+                            className={inputTextStyles2+' ml-3'}
+                            type="text"
+                            id={`${relationship.toLowerCase()}Occupation`}
+                            age={`${relationship.toLowerCase()}Occupation`}
+                            onChange={formik.handleChange}
+                            value={formik.values[`${relationship.toLowerCase()}Occupation`]}
+                            required
+                          />
+                        </li>
+
+                        <li>
+                          <label htmlFor={`${relationship.toLowerCase()}MedicalHistory`}
+                            className={inpLableSty} >
+                            Medical History
+                          </label>
+                          <input
+                            type="file"
+                            className={' ml-3'}
+
+                            id={`${relationship.toLowerCase()}MedicalHistory`}
+                            age={`${relationship.toLowerCase()}MedicalHistory`}
+                            onChange={formik.handleChange}
+                            value={formik.values[`${relationship.toLowerCase()}MedicalHistory`]}
+                            required
+                          />
+                        </li>
+
+                      </ul>
+                      </>
+                    )}
                   </div>
-                </div>
-          </div>
-        
-        
-      
-      
-      </form>
-              
+                ))}
 
-      {['Father', 'Mother', 'Spouse', 'Other'].map((relationship) => (
-        <div key={`${relationship.toLowerCase()}Details`}>
-          {formik.values[`show${relationship}Details`] && (
-            <ul className="options">
-              <li>
-                <label htmlFor={`${relationship.toLowerCase()}Name`}>
-                  {`${relationship} Name: `}
-                  <span style={{ color: 'red' }}>*</span>
-                </label>
-                <input
-                  type="text"
-                  id={`${relationship.toLowerCase()}Name`}
-                  name={`${relationship.toLowerCase()}Name`}
-                  onChange={formik.handleChange}
-                  value={formik.values[`${relationship.toLowerCase()}Name`]}
-                  required
-                />
-              </li>
-
-
-
-              <li>
-                <label htmlFor={`${relationship.toLowerCase()}Name`}>
-                  {`${relationship} Age: `}
-                  <span style={{ color: 'red' }}>*</span>
-                </label>
-                <input
-                  type="text"
-                  id={`${relationship.toLowerCase()}Age`}
-                  age={`${relationship.toLowerCase()}Age`}
-                  onChange={formik.handleChange}
-                  value={formik.values[`${relationship.toLowerCase()}Age`]}
-                  required
-                />
-              </li>
-
-              <li>
-                <label htmlFor={`${relationship.toLowerCase()}Occupation`}>
-                  {`${relationship} Occupation: `}
-                  <span style={{ color: 'red' }}>*</span>
-                </label>
-                <input
-                  type="text"
-                  id={`${relationship.toLowerCase()}Occupation`}
-                  age={`${relationship.toLowerCase()}Occupation`}
-                  onChange={formik.handleChange}
-                  value={formik.values[`${relationship.toLowerCase()}Occupation`]}
-                  required
-                />
-              </li>
-
-              <li>
-                <label htmlFor={`${relationship.toLowerCase()}MedicalHistory`}>
-                  {`${relationship} MedicalHistory: `}
-                  <span style={{ color: 'red' }}>*</span>
-                </label>
-                <input
-                  type="file"
-                  id={`${relationship.toLowerCase()}MedicalHistory`}
-                  age={`${relationship.toLowerCase()}MedicalHistory`}
-                  onChange={formik.handleChange}
-                  value={formik.values[`${relationship.toLowerCase()}MedicalHistory`]}
-                  required
-                />
-              </li>
-              
-            </ul>
-          )}
-        </div>
-      ))}
-
-      <button
-        type="submit"
-        className='border border-blue-400 px-5 py-2 mt-5 rounded-full hover:shadow-lg hover:shadow-blue-200 hover:bg-blue-700 transition-colors bg-blue-600 text-sm font-semibold text-white self-center '
-      >
-        Save
-      </button>
-    </Form>
-    )}
-        </Formik>
+                <button
+                  type="submit"
+                  className='border border-blue-400 px-5 py-2 mt-5 rounded-full hover:shadow-lg hover:shadow-blue-200 hover:bg-blue-700 transition-colors bg-blue-600 text-sm font-semibold text-white self-center '
+                >
+                  Save
+                </button>
+              </Form>
+            )}
+          </Formik>
         </div>
 
-        </div>
       </div>
-      
-    );
-  };
+    </div>
+
+  );
+};
 
 export default PageThree;

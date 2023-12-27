@@ -7,20 +7,20 @@ import { Link, useNavigate } from 'react-router-dom';
 import "bootstrap-icons/font/bootstrap-icons.css";
  import { useLazyGetUserDataQuery } from '../../../../services/userService';
 import { useDispatch, useSelector } from 'react-redux';
-import { addUserData } from '../userSlice';
+import { addUserData, selectLoggedInUser } from '../userSlice';
 import { inpLableSty,errorText, inputTextStyles2, inputTextStylesError } from '../../../../utilities/styleclasses';
 import LoginSideconent from '../../../content/LoginSidecontent'
 const Login = () => {
 
 
-const userdata = useSelector(state=>state.userdata.userinfo)  
+const userdata = useSelector(selectLoggedInUser)  
 
  const [authUser,x] = useLazyGetUserDataQuery()
 
 
 const dispatch = useDispatch()
 const navigate = useNavigate()
-console.log(userdata);
+
 
  
     return (

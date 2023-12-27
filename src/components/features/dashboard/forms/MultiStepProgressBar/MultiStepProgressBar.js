@@ -17,7 +17,7 @@ const MultiStepProgressBar = ({ page, onPageNumberClick }) => {
   }
 
   return (
-    <ProgressBar percent={stepPercentage}>
+    <ProgressBar percent={stepPercentage} className='w-[1000px]'>
       <Step>
         {({ accomplished, index }) => (
           <div

@@ -1,6 +1,6 @@
 .svg-item {
-    width: 200px;
-    height: 200px;
+    width: 28px;
+    height: 28px;
     font-size: 16px;
   }
   .donut-ring {
@@ -12,7 +12,6 @@
     transform-origin: center;
     stroke: #2590EB;
   }
- 
   
   .donut-label {
     font-size: 0.28em;
