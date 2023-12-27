@@ -174,6 +174,7 @@ import "./PageTwo.css";
 import { Field, Form, Formik } from "formik";
 import * as Yup from 'yup';
 import { errorText, inpLableSty, inputTextStyles2, inputTextStylesError } from "../../../../../utilities/styleclasses";
+import { gstRegExp } from "../../../../../utilities/constants";
 
 
 const PageTwo = ({ onButtonClick }) => {
@@ -208,18 +209,21 @@ const PageTwo = ({ onButtonClick }) => {
                 is: (sourse_of_income) => sourse_of_income === 'business',
                 then: () => Yup.object({
                   business_name: Yup.string().required("Business name is required"),
-                  business_annual_revenue: Yup.number().required('Annual revenue is required'),
+                  business_annual_revenue: Yup.number().typeError("Must be a number type").required('Annual revenue is required'),
                   business_type: Yup.string().required('Business type is required'),
-                  business_spare_amount: Yup.number().required('Spare Amount is required'),
-                  gst_number: Yup.number().required('GST Number is required'),
+                  business_spare_amount: Yup.number().typeError("Must be a number type").required('Spare Amount is required'),
+                  gst_number: Yup.string().required('GST Number is required').matches(
+                    gstRegExp,
+                    'Invalid GST number'
+                  ),
                 }),
 
               }).when('sourse_of_income', {
                 is: (sourse_of_income) => sourse_of_income === 'employment',
                 then: () => Yup.object({
                   company_name: Yup.string().required('Company name is required'),
-                  employment_spare_amount: Yup.string().required('Montly Spare amount is required'),
-                  annual_income:  Yup.string().required("Annual income is required"),
+                  employment_spare_amount: Yup.number().typeError("Must be a number type").required('Montly Spare amount is required'),
+                  annual_income:  Yup.number().typeError("Must be a number type").required("Annual income is required"),
 
                 })
               }),

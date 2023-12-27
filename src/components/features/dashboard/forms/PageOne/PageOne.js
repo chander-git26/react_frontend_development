@@ -49,12 +49,12 @@ const PageOne = ({ onButtonClick }) => {
                 .required("Required"),
               marital_status: Yup.string()
                 .required(),
-              weight: Yup.number("Must be a number type").min(30).max(149.9).required(),
+              weight: Yup.number().typeError("Must be a number type"),
               alcohol:Yup.string()
               .required(),
               smoking:Yup.string()
               .required(),
-              pincode: Yup.number("Must be a number type").min(100000,'Invalid Pin').max(899999,'Invalid Pin').required(),
+              pincode: Yup.number().typeError("Must be a number type").min(100000,'Invalid Pin').max(899999,'Invalid Pin').required(),
 
             })}
             onSubmit={async (values) => {
