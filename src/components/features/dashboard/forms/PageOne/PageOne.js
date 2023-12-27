@@ -39,7 +39,13 @@ const PageOne = ({ onButtonClick }) => {
                 .required('Address is required'),
               gender: Yup.string()
                 .required(),
-              date_of_birth: Yup.string()
+              date_of_birth: Yup.date().nullable()
+              .test('dob', 'Should be greater than 18', function (value, ctx) {
+                const dob = new Date(value);
+                const validDate = new Date();
+                const valid = validDate.getFullYear() - dob.getFullYear() >= 18;
+                return !valid ? ctx.createError() : valid; 
+              })
                 .required('Date of birth required'),
               state: Yup.string()
                 .required(),
@@ -105,7 +111,7 @@ const PageOne = ({ onButtonClick }) => {
 
 
                       <div id="my-radio-group" className={inpLableSty}>Date of Birth</div>
-                      <Field name="date_of_birth"  type='date'   className={formik.touched.date_of_birth && formik.errors.date_of_birth ? inputTextStylesError : inputTextStyles2}  {...formik.getFieldProps('date_of_birth')}>
+                      <Field name="date_of_birth"  type='date'    className={formik.touched.date_of_birth && formik.errors.date_of_birth ? inputTextStylesError : inputTextStyles2}  {...formik.getFieldProps('date_of_birth')}>
                
                       </Field>
                 

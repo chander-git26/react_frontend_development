@@ -4,6 +4,7 @@ import { primarybtn } from '../utilities/styleclasses'
 import { useDispatch, useSelector } from 'react-redux'
 import { logoutUser, selectLoggedInUser } from './features/auth/userSlice'
 import './features/dashboard/rightSection/pie.css'
+import ProfileCard from './features/dashboard/rightSection/ProfileCard'
 
 function Header() {
 
@@ -39,7 +40,7 @@ function Header() {
                             </Link>
                         </div>
                         :
-                        <div className='flex justify-center items-center gap-4 border border-gray-100 p-2  px-5 rounded-lg shadow-lg'>
+                        <div className='flex justify-center items-center gap-4 border border-gray-100 p-2 relative  px-5 rounded-lg shadow-lg'>
                             <div className='h-2/6 w-full flex justify-center gap-2 items-center rounded-2xl'>
                                {/* <img src='https://png.pngtree.com/png-vector/20191110/ourmid/pngtree-avatar-icon-profile-icon-member-login-vector-isolated-png-image_1978396.jpg' className='rounded-full scale-100 w-12'/> */}
                                 
@@ -55,7 +56,8 @@ function Header() {
                                 </div>
 
                             </div>
-                            {/* <button className={primarybtn} onClick={() => { logoutHandler() }}>Logout</button> */}
+                            <button className={primarybtn+''} onClick={() => { logoutHandler() }}><i class="bi bi-box-arrow-right"></i></button>
+                           
                         </div>
 
                 }
