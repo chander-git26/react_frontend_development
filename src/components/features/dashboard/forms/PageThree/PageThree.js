@@ -26,7 +26,7 @@ const PageThree = ({ onButtonClick }) => {
 
               showFatherDetails: false,
               showMotherDetails: false,
-              showSpouseDetails: true,
+              showSpouseDetails: false,
               showOthersDetails: false,
               father_name: '',
               father_age: '',
