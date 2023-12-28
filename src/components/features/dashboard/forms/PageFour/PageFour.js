@@ -9,6 +9,11 @@ import * as Yup from 'yup';
 
 const PageFour = ({ onButtonClick }) => {
 
+  
+  const showDetails = (type, value, formik) => {
+    formik.setFieldValue(type, value);
+  };
+
   return (
     <div className='flex flex-1 items-center justify-center gap-16'>
       {/* Form Section */}
@@ -39,7 +44,7 @@ const PageFour = ({ onButtonClick }) => {
             })}
             onSubmit={async (values) => {
               await new Promise((r) => setTimeout(r, 500));
-              alert(JSON.stringify(values))
+              alert(JSON.stringify(values));
               onButtonClick("pagethree")
 
 
@@ -48,6 +53,71 @@ const PageFour = ({ onButtonClick }) => {
             {formik => (
               <Form className='  flex flex-col p-5  gap-8'>
                 <h1 className='text-center text-xl font-bold border-b-2 pb-2 self-center px-4 border-b-blue-600'>Medical Details</h1>
+
+                <form onSubmit={formik.handleSubmit}>
+                  <div >
+                    <div className="">
+                      <div>
+                        <label htmlFor=""> Pre-existing Conditions</label>
+                      </div>
+                      <div className="checkel">
+                        {['High Blood Pressure', 'Diabetes', 'Heart Stroke','Asthma', 'Other'].map((disease) => (
+                          <label key={disease} className={inpLableSty} htmlFor={`show${disease}Details`}>
+                            <input
+                              type="checkbox"
+                              id={`show${disease}Details`}
+                              name={`show${disease}Details`}
+                              onChange={() => showDetails(`show${disease}Details`, !formik.values[`show${disease}Details`], formik)}
+                              className="option"
+                            />
+                            {disease}
+                          </label>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+
+
+
+                </form>
+                
+                {['High Blood Pressure', 'Diabetes', 'Heart Stroke','Asthma', 'Other'].map((disease) => (
+                  <div key={`${disease.toLowerCase()}Details`} >
+                    {formik.values[`show${disease}Details`] && (
+                      <>
+                      
+                      <ul className=" flex flex-col gap-5" >
+
+                        <li>
+                        <label htmlFor={`${disease.toLowerCase()}Name`}
+                            className={inpLableSty} >
+                            Upload Medical History for {disease}
+                          </label>
+                          <input
+                            type="file"
+                            className={' ml-3'}
+
+
+                            id={`${disease.toLowerCase()}`}
+                            
+                            onChange={formik.handleChange}
+                            value={formik.values[`${disease.toLowerCase()}`]}
+                            required
+                          />
+                        </li>
+
+                       
+
+
+
+
+                      </ul>
+                      </>
+                    )}
+                  </div>
+                ))}
+
 							  
 							  
                 <div className=" flex flex-col  relative  border-b-gray-400">
