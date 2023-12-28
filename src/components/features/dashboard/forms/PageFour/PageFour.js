@@ -61,15 +61,15 @@ const PageFour = ({ onButtonClick }) => {
                           <div>
                             <label  className={inpLableSty} htmlFor="preExistingConditionsLabel">Pre-existing Conditions</label>
                           </div>
-                          <div className="checkbox ">
+                          <div className="checkbox">
                             {['High Blood Pressure', 'Diabetes', 'Heart Stroke', 'Asthma', 'Other'].map((disease) => (
-                              <label key={disease} className={inpLableSty+ ' flex justify-center  items-center'} htmlFor={`show${disease.toLowerCase()}Details`}> 
+                              <label key={disease} className={inpLableSty} htmlFor={`show${disease.toLowerCase()}Details`}>
                                 <input
                                   type="checkbox"
                                   id={`show${disease.toLowerCase()}Details`}
                                   name={`show${disease.toLowerCase()}Details`}
                                   onChange={() => showDetails(`show${disease.toLowerCase()}Details`, !formik.values[`show${disease.toLowerCase()}Details`], formik)}
-                                  className="option mr-2"
+                                  className="option"
                                 />
                                 {disease}
                               </label>

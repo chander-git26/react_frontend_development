@@ -12,7 +12,6 @@ const PageThree = ({ onButtonClick }) => {
   const showDetails = (type, value, formik) => {
     formik.setFieldValue(type, value);
   };
-  const married_status ="married"
 
 
   return (
