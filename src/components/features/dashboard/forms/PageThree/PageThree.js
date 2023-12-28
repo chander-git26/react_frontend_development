@@ -11,8 +11,32 @@ import { inpLableSty, inputTextStyles2 } from "../../../../../utilities/stylecla
 const PageThree = ({ onButtonClick }) => {
   const showDetails = (type, value, formik) => {
     formik.setFieldValue(type, value);
+    console.log(formik.values);
   };
 
+  function updateCheckboxes(checkbox) {
+    var checkboxes = document.getElementsByName('relationship');
+    var checkedCount = 0;
+   
+    for (var i = 0; i < checkboxes.length; i++) {
+      if (checkboxes[i].checked) {
+        checkedCount++;
+      }
+      console.log(checkboxes);
+    }
+   
+    if (checkedCount > 2) {
+      checkbox.checked = false;
+    }
+   
+    for (var j = 0; j < checkboxes.length; j++) {
+      if (!checkboxes[j].checked && checkedCount >= 2) {
+        checkboxes[j].disabled = true;
+      } else {
+        checkboxes[j].disabled = false;
+      }
+    }
+  }
 
   return (
     <div className='flex flex-1 items-center justify-center gap-16'>
@@ -89,10 +113,12 @@ const PageThree = ({ onButtonClick }) => {
                             <input
                               type="checkbox"
                               id={`show${relationship}Details`}
-                              name={`show${relationship}Details`}
-
+                              name="relationship"
                               // disabled={formik.values.showSpouseDetails===true?true:false}
-                              onChange={() => showDetails(`show${relationship}Details`, !formik.values[`show${relationship}Details`], formik)}
+                              onChange={() => {
+                                showDetails(`show${relationship}Details`, !formik.values[`show${relationship}Details`], formik);
+                                updateCheckboxes(document.getElementById(`show${relationship}Details`));
+                              }}
                               className="option"
                             />
                             {relationship}
@@ -115,13 +141,18 @@ const PageThree = ({ onButtonClick }) => {
                       <>
                       <h1>{relationship}</h1>
                       <ul className=" flex flex-col gap-5" >
-                        <li>
-                          <label htmlFor={`${relationship.toLowerCase()}Name`}
-                            className={inpLableSty}
-                            >
+                        <li className="flexel">
+                          <div>
+                            <label htmlFor={`${relationship.toLowerCase()}Name`}
+                              className={inpLableSty}
+                              >
 
-                           Name
-                          </label>
+                            Name
+                            </label>
+                            </div>
+                            <div>
+
+                            
                           <input
 
                             type="text"
@@ -133,15 +164,19 @@ const PageThree = ({ onButtonClick }) => {
                             value={formik.values[`${relationship.toLowerCase()}Name`]}
                             required
                             />
+                            </div>
                         </li>
 
 
 
-                        <li>
+                        <li className="flexel">
+                          <div>
                           <label htmlFor={`${relationship.toLowerCase()}Name`}
                             className={inpLableSty} >
                             Age
                           </label>
+                          </div>
+                            <div>
                           <input
                             type="text"
                             className={inputTextStyles2+' ml-3'}
@@ -153,13 +188,17 @@ const PageThree = ({ onButtonClick }) => {
                             value={formik.values[`${relationship.toLowerCase()}Age`]}
                             required
                             />
+                            </div>
                         </li>
 
-                        <li>
+                        <li className="flexel">
+                        <div>
                           <label htmlFor={`${relationship.toLowerCase()}Occupation`}
                             className={inpLableSty} >
                             Occupation 
                           </label>
+                          </div>
+                          <div>
                           <input
                             className={inputTextStyles2+' ml-3'}
                             type="text"
@@ -169,13 +208,17 @@ const PageThree = ({ onButtonClick }) => {
                             value={formik.values[`${relationship.toLowerCase()}Occupation`]}
                             required
                             />
+                            </div>
                         </li>
 
-                        <li>
+                        <li  className="flexel">
+                          <div>
                           <label htmlFor={`${relationship.toLowerCase()}MedicalHistory`}
                             className={inpLableSty} >
                             Medical History
                           </label>
+                          </div>
+                          <div>
                           <input
                             type="file"
                             className={' ml-3'}
@@ -186,6 +229,7 @@ const PageThree = ({ onButtonClick }) => {
                             value={formik.values[`${relationship.toLowerCase()}MedicalHistory`]}
                             required
                             />
+                            </div>
                         </li>
 
                       </ul>
