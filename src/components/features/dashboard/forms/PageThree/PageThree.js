@@ -12,6 +12,7 @@ const PageThree = ({ onButtonClick }) => {
   const showDetails = (type, value, formik) => {
     formik.setFieldValue(type, value);
   };
+  const married_status ="married"
 
 
   return (
@@ -23,10 +24,9 @@ const PageThree = ({ onButtonClick }) => {
           <Formik
             initialValues={{
 
-
               showFatherDetails: false,
               showMotherDetails: false,
-              showSpouseDetails: false,
+              showSpouseDetails: true,
               showOthersDetails: false,
               father_name: '',
               father_age: '',
@@ -91,10 +91,13 @@ const PageThree = ({ onButtonClick }) => {
                               type="checkbox"
                               id={`show${relationship}Details`}
                               name={`show${relationship}Details`}
+
+                              // disabled={formik.values.showSpouseDetails===true?true:false}
                               onChange={() => showDetails(`show${relationship}Details`, !formik.values[`show${relationship}Details`], formik)}
                               className="option"
                             />
                             {relationship}
+                            {console.log(formik.values.showFatherDetails===true?"hello":false)}
                           </label>
                         ))}
                       </div>
@@ -104,10 +107,10 @@ const PageThree = ({ onButtonClick }) => {
 
 
 
-                </form>
-
+                          <div className="flex">
 
                 {['Father', 'Mother', 'Spouse', 'Other'].map((relationship) => (
+                  
                   <div key={`${relationship.toLowerCase()}Details`} >
                     {formik.values[`show${relationship}Details`] && (
                       <>
@@ -116,7 +119,7 @@ const PageThree = ({ onButtonClick }) => {
                         <li>
                           <label htmlFor={`${relationship.toLowerCase()}Name`}
                             className={inpLableSty}
-                          >
+                            >
 
                            Name
                           </label>
@@ -124,13 +127,13 @@ const PageThree = ({ onButtonClick }) => {
 
                             type="text"
                             className={inputTextStyles2+' ml-3'}
-
+                            
                             id={`${relationship.toLowerCase()}Name`}
                             name={`${relationship.toLowerCase()}Name`}
                             onChange={formik.handleChange}
                             value={formik.values[`${relationship.toLowerCase()}Name`]}
                             required
-                          />
+                            />
                         </li>
 
 
@@ -143,14 +146,14 @@ const PageThree = ({ onButtonClick }) => {
                           <input
                             type="text"
                             className={inputTextStyles2+' ml-3'}
-
-
+                            
+                            
                             id={`${relationship.toLowerCase()}Age`}
                             age={`${relationship.toLowerCase()}Age`}
                             onChange={formik.handleChange}
                             value={formik.values[`${relationship.toLowerCase()}Age`]}
                             required
-                          />
+                            />
                         </li>
 
                         <li>
@@ -166,7 +169,7 @@ const PageThree = ({ onButtonClick }) => {
                             onChange={formik.handleChange}
                             value={formik.values[`${relationship.toLowerCase()}Occupation`]}
                             required
-                          />
+                            />
                         </li>
 
                         <li>
@@ -177,13 +180,13 @@ const PageThree = ({ onButtonClick }) => {
                           <input
                             type="file"
                             className={' ml-3'}
-
+                            
                             id={`${relationship.toLowerCase()}MedicalHistory`}
                             age={`${relationship.toLowerCase()}MedicalHistory`}
                             onChange={formik.handleChange}
                             value={formik.values[`${relationship.toLowerCase()}MedicalHistory`]}
                             required
-                          />
+                            />
                         </li>
 
                       </ul>
@@ -191,6 +194,9 @@ const PageThree = ({ onButtonClick }) => {
                     )}
                   </div>
                 ))}
+                </div>
+                </form>
+
 
                 <button
                   type="submit"

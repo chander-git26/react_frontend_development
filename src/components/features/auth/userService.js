@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { BASEURL } from '../utilities/constants'
+import { BASEURL } from '../../../utilities/constants'
  
 export const userApi = createApi({
   reducerPath: 'userApi',
@@ -11,7 +11,14 @@ export const userApi = createApi({
         method: 'GET',
       }),
     }),
+    postUserProfession: builder.mutation({
+      query: (body) => ({
+        url: `/users/${body.id}`,
+        method: 'PATCH',
+        body:{...body.profession}
+      }),
+    }),
   }),
 })
  
-export const { useGetUserDataQuery,useLazyGetUserDataQuery } = userApi
+export const { useGetUserDataQuery,useLazyGetUserDataQuery,usePostUserProfessionMutation } = userApi

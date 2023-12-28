@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 import { Link, useNavigate } from 'react-router-dom';
 
 import "bootstrap-icons/font/bootstrap-icons.css";
- import { useLazyGetUserDataQuery } from '../../../../services/userService';
+ import { useLazyGetUserDataQuery } from '../userService';
 import { useDispatch, useSelector } from 'react-redux';
 import { addUserData, selectLoggedInUser } from '../userSlice';
 import { inpLableSty,errorText, inputTextStyles2, inputTextStylesError } from '../../../../utilities/styleclasses';
@@ -13,9 +13,9 @@ import LoginSideconent from '../../../content/LoginSidecontent'
 const Login = () => {
 
 
-const userdata = useSelector(selectLoggedInUser)  
+// const userdata = useSelector(selectLoggedInUser)  
 
- const [authUser,x] = useLazyGetUserDataQuery()
+ const [authUser] = useLazyGetUserDataQuery()
 
 
 const dispatch = useDispatch()

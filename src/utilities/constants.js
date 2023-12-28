@@ -4,5 +4,5 @@ export const gstRegExp =  /\d{2}[A-Z]{5}\d{4}[A-Z]{1}[A-Z\d]{1}[Z]{1}[A-Z\d]{1}/
 
 
 
-export const BASEURL = 'http://localhost:8080/' 
+export const BASEURL = 'http://localhost:3004' 
   

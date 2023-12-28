@@ -21,14 +21,17 @@ const navigate = useNavigate()
 useEffect(()=>{
   if(userdata){
     navigate('/dashboard')
-    
   }
 },[])
 
 
 
   const  submitHandler = async(body) =>{
-     await axios.post('http://localhost:8080/users',body)
+     await axios.post('http://localhost:8281/user/createUser',body,{
+      headers: {
+        cos_app_access_token: "FYy4tuaOC64uv-qZkzdC6jKBQLabF5kqU5JARliSB11_t4P7beK-3wCtbvUqlaa4C9zKU0XxQbjlJahFFxKZX8kBrCNGh4HJ7-UvRE3DdNxVGvvij6RwiiwojEvH1nmu3SC_CA"
+      }
+    })
     .then(function (response) {
       console.log(response);
     })
@@ -49,22 +52,22 @@ useEffect(()=>{
             <Formik
               initialValues={{
                  
-                firstName: 'Viswa Kiran',
-                lastName: 'Kathi',
-                email: 'k.viswa@gmail.com',
-                password: 'Asdf@1234',
-                phoneNumber: '9000090000',
-                confirm_password: 'Asdf@1234',
+                firstname: '',
+                lastname: '',
+                email: '',
+                password: '',
+                mobile: '',
+                confirm_password: '',
               }}
               validationSchema={Yup.object({
-                firstName: Yup.string()
+                firstname: Yup.string()
                   .max(20, 'Must be 15 characters or less')
                   .required('Firstname is required'),
-                lastName: Yup.string()
+                lastname: Yup.string()
                   .max(20, 'Must be 20 characters or less')
                   .required('Lastname is required'),
                 email: Yup.string().email('Invalid email address').required('E-mail is required'),
-                phoneNumber: Yup.string().required('Phone number is Required').matches(phoneRegExp, 'Phone number is not valid').min(10, 'Phone number is not valid').max(10, 'Phone number is not valid'),
+                mobile: Yup.string().required('Phone number is Required').matches(phoneRegExp, 'Phone number is not valid').min(10, 'Phone number is not valid').max(10, 'Phone number is not valid'),
                 password: Yup.string().required('Password is required').matches(
                   passwordRegExp,
                   'Must contain at least 8 Characters, 1 Uppercase, 1 Lowercase, 1 Special Character, and 1 Number'
@@ -76,7 +79,9 @@ useEffect(()=>{
               })}
               onSubmit={async (values) => {
                 await new Promise((r) => setTimeout(r, 500));
-                 
+                 console.log(values);
+                //  delete values.confirm_password;
+
                
                 submitHandler(values);
               }}
@@ -87,22 +92,22 @@ useEffect(()=>{
                   <div className='flex gap-4'>
 
                     <div className=" flex flex-col  relative  border-b-gray-400">
-                      <label htmlFor="firstName" className={inpLableSty} >FIRST NAME</label>
-                      <Field id="firstName" name="firstName" value={formik.values.firstName} className={formik.touched.firstName && formik.errors.firstName ? inputTextStylesError : inputTextStyles2} placeholder="Enter firstname" {...formik.getFieldProps('firstName')} />
-                      {formik.touched.firstName && formik.errors.firstName ? (
-                        <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors.firstName}</div>
+                      <label htmlFor="firstname" className={inpLableSty} >FIRST NAME</label>
+                      <Field id="firstname" name="firstname" value={formik.values.firstname} className={formik.touched.firstname && formik.errors.firstname ? inputTextStylesError : inputTextStyles2} placeholder="Enter firstname" {...formik.getFieldProps('firstname')} />
+                      {formik.touched.firstname && formik.errors.firstname ? (
+                        <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors.firstname}</div>
                       ) : null}
-                      {/* {formik.touched.firstName && !formik.errors.firstName ? (
+                      {/* {formik.touched.firstname && !formik.errors.firstname ? (
                         <div className={successText}><i className="bi bi-check-circle-fill"></i>  </div>
                       ) : null} */}
                     </div>
                     <div className=" flex flex-col  relative  border-b-gray-400">
-                      <label htmlFor="lastName " className={inpLableSty}>LASTNAME</label>
-                      <Field id="lastName" name="lastName" className={formik.touched.lastName && formik.errors.lastName ? inputTextStylesError : inputTextStyles2} placeholder="Enter Lastname"  {...formik.getFieldProps('lastName')} />
-                      {formik.touched.lastName && formik.errors.lastName ? (
-                        <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors.lastName}</div>
+                      <label htmlFor="lastname " className={inpLableSty}>LASTNAME</label>
+                      <Field id="lastname" name="lastname" className={formik.touched.lastname && formik.errors.lastname ? inputTextStylesError : inputTextStyles2} placeholder="Enter Lastname"  {...formik.getFieldProps('lastname')} />
+                      {formik.touched.lastname && formik.errors.lastname ? (
+                        <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors.lastname}</div>
                       ) : null}
-                      {/* {formik.touched.lastName && !formik.errors.lastName ? (
+                      {/* {formik.touched.lastname && !formik.errors.lastname ? (
                         <div className={successText}><i className="bi bi-check-circle-fill"></i>  </div>
 
                       ) : null} */}
@@ -128,12 +133,12 @@ useEffect(()=>{
 
                   </div>
                   <div className="flex flex-col  relative  border-b-gray-400">
-                    <label htmlFor="phoneNumber" className={inpLableSty}>PHONE</label>
-                    <Field id="phoneNumber" name="phoneNumber" placeholder="Enter your phone number" type='text' className={formik.touched.phoneNumber && formik.errors.phoneNumber ? inputTextStylesError : inputTextStyles2} />
-                    {formik.touched.phoneNumber && formik.errors.phoneNumber ? (
-                      <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors.phoneNumber}</div>
+                    <label htmlFor="mobile" className={inpLableSty}>PHONE</label>
+                    <Field id="mobile" name="mobile" placeholder="Enter your phone number" type='text' className={formik.touched.mobile && formik.errors.mobile ? inputTextStylesError : inputTextStyles2} />
+                    {formik.touched.mobile && formik.errors.mobile ? (
+                      <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors.mobile}</div>
                     ) : null}
-                    {/* {formik.touched.phoneNumber && !formik.errors.phoneNumber ? (
+                    {/* {formik.touched.mobile && !formik.errors.mobile ? (
                       <div className={successText}><i className="bi bi-check-circle-fill"></i>  </div>
 
                     ) : null} */}
@@ -151,12 +156,12 @@ useEffect(()=>{
                   </div>
 
                   <div className="flex flex-col  relative  border-b-gray-400">
-                    <label htmlFor="lastName" className={inpLableSty}>CONFIRM PASSWORD</label>
-                    <Field id="confirmpassword" name="confirmpassword" placeholder="Confirm password" type='password' className={formik.touched.confirmpassword && formik.errors.confirmpassword ? inputTextStylesError : inputTextStyles2} />
-                    {formik.touched.confirmpassword && formik.errors.confirmpassword ? (
-                      <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors.confirmpassword}</div>
+                    <label htmlFor="lastname" className={inpLableSty}>CONFIRM PASSWORD</label>
+                    <Field id="confirm_password" name="confirm_password" placeholder="Confirm password" type='password' className={formik.touched.confirm_password && formik.errors.confirm_password ? inputTextStylesError : inputTextStyles2} />
+                    {formik.touched.confirm_password && formik.errors.confirm_password ? (
+                      <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors.confirm_password}</div>
                     ) : null}
-                    {/* {formik.touched.confirmpassword && !formik.errors.confirmpassword ? (
+                    {/* {formik.touched.confirm_password && !formik.errors.confirm_password ? (
                       <div className={successText}><i className="bi bi-check-circle-fill"></i>  </div>
 
                     ) : null} */}

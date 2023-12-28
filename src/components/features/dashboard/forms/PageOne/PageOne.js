@@ -126,8 +126,8 @@ const PageOne = ({ onButtonClick }) => {
                       <div id="my-radio-group" className={inpLableSty}>Marital Status :</div>
                       <div role="group" className="flex flex-row gap-1" aria-labelledby="my-radio-group">
                         <label className={inpLableSty}>
-                          <Field type="radio" name="marital_status" value="yes" /> {" "}
-                          Yes
+                          <Field type="radio" name="marital_status" value="married" /> {" "}
+                          Married
                         </label>
                         <label className={inpLableSty}>
                           <Field type="radio" name="marital_status" value="no" /> {" "}
