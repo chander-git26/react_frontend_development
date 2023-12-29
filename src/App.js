@@ -3,12 +3,13 @@ import './App.css';
 
 
 
-import Login from './components/features/auth/components/Login';
-import SignupForm from './components/features/auth/components/SignupForm';
-import CompleteDetails from './components/features/dashboard/CompleteDetails';
-import Dashboard from './components/features/dashboard/Dashboard';
-import Mainbody from './components/Mainbody';
+
+import Mainbody from './components/pages/Mainbody';
 import Protected from './components/features/auth/components/Protected';
+import LoginPage from './components/pages/LoginPage';
+import SignupPage from './components/pages/SignupPage';
+import UserForm from './components/pages/UserForm';
+import DashboardPage from './components/pages/DashboardPage';
 
 const router = createBrowserRouter([
 
@@ -19,26 +20,26 @@ const router = createBrowserRouter([
 
       {
         path: '/login',
-        element: <Login />
+        element: <LoginPage />
       },
 
       {
         path: '/',
-        element: <SignupForm />
+        element: <SignupPage />
       },
       {
         path: '/fillform',
         element:
         <Protected>
 
-          <CompleteDetails />
+          <UserForm />
         </Protected> 
       },
       {
         path: '/dashboard',
         element:
           <Protected>
-            <Dashboard />
+            <DashboardPage/>
           </Protected>
       }
     ]

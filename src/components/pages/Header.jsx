@@ -1,10 +1,10 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { primarybtn } from '../utilities/styleclasses'
 import { useDispatch, useSelector } from 'react-redux'
-import { logoutUser, selectLoggedInUser } from './features/auth/userSlice'
-import './features/dashboard/rightSection/pie.css'
-import ProfileCard from './features/dashboard/rightSection/ProfileCard'
+import '../features/dashboard/rightSection/pie.css'
+import ProfileCard from '../features/dashboard/rightSection/ProfileCard'
+import { primarybtn } from '../../utilities/styleclasses'
+import { logoutUser, selectLoggedInUser } from '../features/auth/userSlice'
 
 function Header() {
 
