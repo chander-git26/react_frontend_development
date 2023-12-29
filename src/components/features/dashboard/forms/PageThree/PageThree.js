@@ -103,7 +103,7 @@ const PageThree = ({ onButtonClick }) => {
  
                 <form onSubmit={formik.handleSubmit}>
                   <div >
-                    <div className="labelel">
+                    <div className="mb-4">
                       <div>
                         <label htmlFor="">Select Your Nominees</label>
                       </div>
@@ -119,7 +119,7 @@ const PageThree = ({ onButtonClick }) => {
                                 showDetails(`show${relationship}Details`, !formik.values[`show${relationship}Details`], formik);
                                 updateCheckboxes(document.getElementById(`show${relationship}Details`));
                               }}
-                              className="option"
+                              className="ml-5 mr-1 mt-5"
                             />
                             {relationship}
                             {console.log(formik.values.showFatherDetails===true?"hello":false)}
@@ -156,7 +156,7 @@ const PageThree = ({ onButtonClick }) => {
                           <input
  
                             type="text"
-                            className={inputTextStyles2+' ml-3'}
+                            className={inputTextStyles2+' m-2'}
                            
                             id={`${relationship.toLowerCase()}Name`}
                             name={`${relationship.toLowerCase()}Name`}
@@ -179,7 +179,7 @@ const PageThree = ({ onButtonClick }) => {
                             <div>
                           <input
                             type="text"
-                            className={inputTextStyles2+' ml-3'}
+                            className={inputTextStyles2+' m-2'}
                            
                            
                             id={`${relationship.toLowerCase()}Age`}
@@ -200,7 +200,7 @@ const PageThree = ({ onButtonClick }) => {
                           </div>
                           <div>
                           <input
-                            className={inputTextStyles2+' ml-3'}
+                            className={inputTextStyles2+' m-2'}
                             type="text"
                             id={`${relationship.toLowerCase()}Occupation`}
                             age={`${relationship.toLowerCase()}Occupation`}
@@ -221,7 +221,7 @@ const PageThree = ({ onButtonClick }) => {
                           <div>
                           <input
                             type="file"
-                            className={' ml-3'}
+                            className={' m-2'}
                            
                             id={`${relationship.toLowerCase()}MedicalHistory`}
                             age={`${relationship.toLowerCase()}MedicalHistory`}

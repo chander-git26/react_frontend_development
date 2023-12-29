@@ -57,7 +57,7 @@ const PageFour = ({ onButtonClick }) => {
                     </h1>
                     <form onSubmit={formik.handleSubmit}>
                       <div>
-                        <div className="">
+                        <div className="ml-4">
                           <div>
                             <label  className={inpLableSty} htmlFor="preExistingConditionsLabel">Pre-existing Conditions</label>
                           </div>
@@ -69,7 +69,7 @@ const PageFour = ({ onButtonClick }) => {
                                   id={`show${disease.toLowerCase()}Details`}
                                   name={`show${disease.toLowerCase()}Details`}
                                   onChange={() => showDetails(`show${disease.toLowerCase()}Details`, !formik.values[`show${disease.toLowerCase()}Details`], formik)}
-                                  className="option"
+                                  className="m-1"
                                 />
                                 {disease}
                               </label>
@@ -81,10 +81,10 @@ const PageFour = ({ onButtonClick }) => {
                         <div key={`${disease.toLowerCase()}Details`}>
                           {formik.values[`show${disease.toLowerCase()}Details`] && (
                             <>
-                              <ul className="flex flex-col gap-5 mt-3">
-                                <li className="flexel">
+                              <ul className="flex flex-col gap-5 m-2">
+                                <li className="flexel mt-3">
                                   <div>
-                                    <label  htmlFor={`${disease.toLowerCase()}Name`} >
+                                    <label className={inpLableSty} htmlFor={`${disease.toLowerCase()}Name`} >
                                       Recent Report of {disease}
                                     </label>
                                   </div>
@@ -92,7 +92,7 @@ const PageFour = ({ onButtonClick }) => {
                                   <div>
                                     <input
                                       type="file"
-                                      className="m-3"
+                                      className=""
                                       id={`${disease.toLowerCase()}`}
                                       onChange={formik.handleChange}
                                       defaultValue={formik.values[`${disease.toLowerCase()}`]}

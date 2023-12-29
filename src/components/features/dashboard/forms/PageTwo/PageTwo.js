@@ -1,6 +1,3 @@
-
-
-
 import React from "react";
 import "./PageTwo.css";
 import { Field, Form, Formik } from "formik";
@@ -30,7 +27,7 @@ const PageTwo = ({ onButtonClick }) => {
           <Formik
 
             initialValues={{
-              sourse_of_income: '',
+              source_of_income: '',
 
               profession: {
                 company_name: '',
@@ -46,11 +43,11 @@ const PageTwo = ({ onButtonClick }) => {
 
 
             validationSchema={Yup.object({
-              sourse_of_income: Yup.string().required(),
-              profession: Yup.object().when('sourse_of_income', {
-                is: (sourse_of_income) => sourse_of_income === 'business',
+              source_of_income: Yup.string().required('Source of Income is required'),
+              profession: Yup.object().when('source_of_income', {
+                is: (source_of_income) => source_of_income === 'business',
                 then: () => Yup.object({
-                  business_name: Yup.string().required("Business name is required"),
+                  business_name: Yup.string(),
                   business_annual_revenue: Yup.number().typeError("Must be a number type").required('Annual revenue is required'),
                   business_type: Yup.string().required('Business type is required'),
                   business_spare_amount: Yup.number().typeError("Must be a number type").required('Spare Amount is required'),
@@ -60,11 +57,11 @@ const PageTwo = ({ onButtonClick }) => {
                   ),
                 }),
 
-              }).when('sourse_of_income', {
-                is: (sourse_of_income) => sourse_of_income === 'employment',
+              }).when('source_of_income', {
+                is: (source_of_income) => source_of_income === 'employment',
                 then: () => Yup.object({
-                  company_name: Yup.string().required('Company name is required'),
-                  employment_spare_amount: Yup.number().typeError("Must be a number type").required('Montly Spare amount is required'),
+                  company_name: Yup.string(),
+                  employment_spare_amount: Yup.number().typeError("Must be a number type").required(' Spare amount is required'),
                   annual_income:  Yup.number().typeError("Must be a number type").required("Annual income is required"),
                   
                 })
@@ -72,11 +69,11 @@ const PageTwo = ({ onButtonClick }) => {
             })}
               onSubmit={async (values) => {
               await new Promise((r) => setTimeout(r, 500));
-              if(values.sourse_of_income==="employment"){
+              if(values.source_of_income==="employment"){
                 const temp = {
                   id:user.id,
                   profession:{
-                  sourse_of_income:values.sourse_of_income,
+                    source_of_income:values.source_of_income,
                   company_name: values.profession.company_name,
                   annual_income:values.profession.annual_income,
                   spare_amount:values.profession.employment_spare_amount ,}
@@ -85,9 +82,9 @@ const PageTwo = ({ onButtonClick }) => {
                 // alert(JSON.stringify(temp))
                 onButtonClick("pagethree")
               }
-              if(values.sourse_of_income==="business"){
+              if(values.source_of_income==="business"){
                 const temp = {
-                  sourse_of_income:values.sourse_of_income,
+                  source_of_income:values.source_of_income,
                   business_name: values.profession.business_name,
                   business_annual_revenue:values.profession.business_annual_revenue,
                   business_type: values.profession.business_type,
@@ -107,16 +104,16 @@ const PageTwo = ({ onButtonClick }) => {
                 <h1 className='text-center text-xl font-bold border-b-2 pb-2 self-center px-4 border-b-blue-600'>Professional Details</h1>
 
                 <div className=" flex flex-col  relative  border-b-gray-400">
-                  <label htmlFor="sourse_of_income" className={inpLableSty} >Source of Income</label>
-                  <Field id="sourse_of_income" name="sourse_of_income" as='select' value={formik.values.sourse_of_income} className={formik.touched.sourse_of_income && formik.errors.sourse_of_income ? inputTextStylesError : inputTextStyles2} placeholder="Enter Your sourse_of_income" {...formik.getFieldProps('sourse_of_income')} >
+                  <label htmlFor="source_of_income" className={inpLableSty} >Source of Income</label>
+                  <Field id="source_of_income" name="source_of_income" as='select' value={formik.values.source_of_income} className={formik.touched.source_of_income && formik.errors.source_of_income ? inputTextStylesError : inputTextStyles2} placeholder="Enter Your source_of_income" {...formik.getFieldProps('source_of_income')} >
 
                     <option disabled value="">Select source of income</option>
                     <option value="business">Business</option>
                     <option value="employment">Employment</option>
 
                   </Field>
-                  {formik.touched.sourse_of_income && formik.errors.sourse_of_income ? (
-                    <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors.sourse_of_income}</div>
+                  {formik.touched.source_of_income && formik.errors.source_of_income ? (
+                    <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors.source_of_income}</div>
                   ) : null}
 
 
@@ -124,7 +121,7 @@ const PageTwo = ({ onButtonClick }) => {
                 </div>
 
                 {
-                  formik.values.sourse_of_income === 'business' && (
+                  formik.values.source_of_income === 'business' && (
                     <>
                       <div className=" flex flex-col  relative  border-b-gray-400">
                         <label htmlFor="profession.business_name" className={inpLableSty} >Business Name</label>
@@ -166,7 +163,7 @@ const PageTwo = ({ onButtonClick }) => {
 
                         </Field>
                         {formik.touched.profession?.business_type && formik.errors.profession?.business_type ? (
-                          <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors.weight}</div>
+                          <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors.profession?.business_type}</div>
                         ) : null}
                       </div>
 
@@ -183,7 +180,7 @@ const PageTwo = ({ onButtonClick }) => {
                   )
                 }
                 {
-                  formik.values.sourse_of_income === 'employment' && (
+                  formik.values.source_of_income === 'employment' && (
                     <>
                       <div className=" flex flex-col  relative  border-b-gray-400">
                         <label htmlFor="profession.company_name" className={inpLableSty} >Company Name</label>
@@ -196,19 +193,21 @@ const PageTwo = ({ onButtonClick }) => {
                         ) : null}
                       </div>
 
-                      <div className=" flex flex-col  relative  border-b-gray-400">
-                        <label htmlFor="employment_spare_amount" className={inpLableSty} >Spare Amount</label>
-                        <Field id="employment_spare_amount" name="employment_spare_amount" value={formik.values.profession.employment_spare_amount} className={formik.touched.profession?.employment_spare_amount && formik.errors.profession?.employment_spare_amount ? inputTextStylesError : inputTextStyles2} placeholder="Enter your monthly Spare Amount" {...formik.getFieldProps('profession.employment_spare_amount')} />
-                        {formik.touched.profession?.employment_spare_amount && formik.errors.profession?.employment_spare_amount ? (
-                          <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors.profession?.employment_spare_amount}</div>
-                        ) : null}
-
-                      </div>
+                      
                       <div className=" flex flex-col  relative  border-b-gray-400">
                         <label htmlFor="annual_income" className={inpLableSty} >Annual Income</label>
                         <Field id="annual_income" name="profession.annual_income" value={formik.values.profession.annual_income} className={formik.touched?.profession?.annual_income && formik.errors?.profession?.annual_income ? inputTextStylesError : inputTextStyles2} placeholder="Enter Your Annual Income" {...formik.getFieldProps('profession.annual_income')} />
                         {formik.touched?.profession?.annual_income && formik.errors?.profession?.annual_income ? (
                           <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors?.profession?.annual_income}</div>
+                        ) : null}
+
+                      </div>
+
+                      <div className=" flex flex-col  relative  border-b-gray-400">
+                        <label htmlFor="employment_spare_amount" className={inpLableSty} >Spare Amount</label>
+                        <Field id="employment_spare_amount" name="employment_spare_amount" value={formik.values.profession.employment_spare_amount} className={formik.touched.profession?.employment_spare_amount && formik.errors.profession?.employment_spare_amount ? inputTextStylesError : inputTextStyles2} placeholder="Enter your monthly Spare Amount" {...formik.getFieldProps('profession.employment_spare_amount')} />
+                        {formik.touched.profession?.employment_spare_amount && formik.errors.profession?.employment_spare_amount ? (
+                          <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors.profession?.employment_spare_amount}</div>
                         ) : null}
 
                       </div>

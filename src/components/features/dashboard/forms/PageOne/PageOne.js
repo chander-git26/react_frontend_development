@@ -31,16 +31,16 @@ const PageOne = ({ onButtonClick }) => {
               alcohol: '',
               smoking: '',
               weight: '',
+              pincode: '',
 
             }}
             validationSchema={Yup.object({
               address: Yup.string().trim()
-                .max(20, 'Must be 15 characters or less')
-                .required('Address is required'),
+                .max(20, 'Must be 15 characters or less'),
               gender: Yup.string()
                 .required(),
               date_of_birth: Yup.date().nullable()
-              .test('dob', 'Should be greater than 18', function (value, ctx) {
+              .test('dob', 'Should be Older than 18', function (value, ctx) {
                 const dob = new Date(value);
                 const validDate = new Date();
                 const valid = validDate.getFullYear() - dob.getFullYear() >= 18;
@@ -49,10 +49,8 @@ const PageOne = ({ onButtonClick }) => {
                 .required('Date of birth required'),
               state: Yup.string()
                 .required(),
-              city: Yup.string()
-                .required(),
-              height: Yup.string()
-                .required("Required"),
+              city: Yup.string(),
+              height: Yup.string(),
               marital_status: Yup.string()
                 .required(),
               weight: Yup.number().typeError("Must be a number type"),
@@ -60,7 +58,7 @@ const PageOne = ({ onButtonClick }) => {
               .required(),
               smoking:Yup.string()
               .required(),
-              pincode: Yup.number().typeError("Must be a number type").min(100000,'Invalid Pin').max(899999,'Invalid Pin').required(),
+              pincode: Yup.number().integer().typeError("Must be a number type").min(100000,'Invalid Pin').max(899999,'Invalid Pin').required(),
 
             })}
             onSubmit={async (values) => {
@@ -107,7 +105,7 @@ const PageOne = ({ onButtonClick }) => {
                       ) : null}
 
                     </div>
-                    <div className=" flex flex-col  relative  border-b-gray-400">
+                    <div className=" flex flex-col mb-4 relative  border-b-gray-400">
 
 
                       <div id="my-radio-group" className={inpLableSty}>Date of Birth</div>
@@ -121,7 +119,7 @@ const PageOne = ({ onButtonClick }) => {
                     </div>
 
 
-                    <div className=" flex flex-row gap-5  relative h-6 border-b-gray-400">
+                    <div className=" flex flex-row gap-5 mb-4 relative h-6 border-b-gray-400">
 
                       <div id="my-radio-group" className={inpLableSty}>Marital Status :</div>
                       <div role="group" className="flex flex-row gap-1" aria-labelledby="my-radio-group">
@@ -131,7 +129,7 @@ const PageOne = ({ onButtonClick }) => {
                         </label>
                         <label className={inpLableSty}>
                           <Field type="radio" name="marital_status" value="no" /> {" "}
-                          No
+                          Single
                         </label>
 
 
@@ -145,7 +143,7 @@ const PageOne = ({ onButtonClick }) => {
                
                     <div className="flex gap-3">
 
-                      <div className=" flex flex-col  relative  border-b-gray-400">
+                      <div className=" flex flex-col mb-4 relative  border-b-gray-400">
                         <label htmlFor="height" className={inpLableSty} >Height</label>
                         <Field id="height" name="height" as='select' value={formik.values.height} className={formik.touched.height && formik.errors.height ? inputTextStylesError : inputTextStyles2} placeholder="Enter Your City" {...formik.getFieldProps('height')} >
 
@@ -158,13 +156,26 @@ const PageOne = ({ onButtonClick }) => {
                           <option value="5.1">5.1 ft</option>
                           <option value="5.2">5.2 ft</option>
                           <option value="5.3">5.3 ft</option>
+                          <option value="5.4">5.4 ft</option>
+                          <option value="5.5">5.5 ft</option>
+                          <option value="5.6">5.6 ft</option>
+                          <option value="5.7">5.7 ft</option>
+                          <option value="5.8">5.8 ft</option>
+                          <option value="5.9">5.9 ft</option>
+                          <option value="5.10">5.10 ft</option>
+                          <option value="5.11">5.11 ft</option>
+                          <option value="5.12">6 ft</option>
+                          <option value="6.1">6.1 ft</option>
+                          <option value="6.2">6.2 ft</option>
+                          <option value="6.3">3.3 ft</option>
+                          <option value="6.4">6.4 ft</option>
 
                         </Field>
                         {formik.touched.height && formik.errors.height ? (
                           <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors.height}</div>
                         ) : null}
                       </div>
-                      <div className=" flex flex-col  relative  border-b-gray-400">
+                      <div className=" flex flex-col mb-4 relative  border-b-gray-400">
 
                         <label htmlFor="weight" className={inpLableSty} >Weight</label>
                         <Field id="weight" name="weight" value={formik.values.weight} className={formik.touched.weight && formik.errors.weight ? inputTextStylesError : inputTextStyles2} placeholder="Enter Your weight in kgs" {...formik.getFieldProps('weight')} >
@@ -180,7 +191,7 @@ const PageOne = ({ onButtonClick }) => {
 
                     </div>
                    
-                      <div className=" flex  gap-5  relative h-6 border-b-gray-400">
+                      <div className=" flex  gap-5 mb-4 relative h-6 border-b-gray-400">
 
                         <div id="my-radio-group" className={inpLableSty+'w-20'}>Smoking :</div>
                         <div role="group" className="flex flex-row gap-1" aria-labelledby="my-radio-group">
@@ -200,7 +211,7 @@ const PageOne = ({ onButtonClick }) => {
                         ) : null}
 
                       </div>
-                      <div className=" flex  gap-5  relative h-6 border-b-gray-400">
+                      <div className=" flex  gap-5 mb-4 relative h-6 border-b-gray-400">
 
                         <div id="my-radio-group" className={inpLableSty+'w-20'}>Alcohol :</div>
                         <div role="group" className="flex flex-row gap-1" aria-labelledby="my-radio-group">
@@ -219,8 +230,8 @@ const PageOne = ({ onButtonClick }) => {
 
 
                         </div>
-                        {formik.touched.smoking && formik.errors.smoking ? (
-                          <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors.smoking}</div>
+                        {formik.touched.alcohol && formik.errors.alcohol ? (
+                          <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors.alcohol}</div>
                         ) : null}
 
                       </div>
@@ -239,7 +250,7 @@ const PageOne = ({ onButtonClick }) => {
                               */}
 
                   <div className="flex-1">
-                    <div className=" flex flex-col  relative  border-b-gray-400">
+                    <div className=" flex flex-col  mb-4 relative  border-b-gray-400">
                       <label htmlFor="address" className={inpLableSty} >ADDRESS</label>
                       <Field id="address" name="address" value={formik.values.address} className={formik.touched.address && formik.errors.address ? inputTextStylesError : inputTextStyles2} placeholder="Enter Your Address" {...formik.getFieldProps('address')} />
                       {formik.touched.address && formik.errors.address ? (
@@ -248,7 +259,7 @@ const PageOne = ({ onButtonClick }) => {
 
                     </div>
 
-                    <div className=" flex flex-col  relative  border-b-gray-400">
+                    <div className=" flex flex-col mb-4 relative  border-b-gray-400">
                       <label htmlFor="state" className={inpLableSty} >State</label>
                       <Field id="state" name="state" as='select' value={formik.values.state} className={formik.touched.state && formik.errors.state ? inputTextStylesError : inputTextStyles2} placeholder="Enter Your State" {...formik.getFieldProps('state')} >
                         <option disabled value="">Select State</option>
@@ -262,7 +273,7 @@ const PageOne = ({ onButtonClick }) => {
                       ) : null}
 
                     </div>
-                    <div className=" flex flex-col  relative  border-b-gray-400">
+                    <div className=" flex flex-col mb-4  relative  border-b-gray-400">
                       <label htmlFor="city" className={inpLableSty} >City</label>
                       <Field id="city" name="city" as='select' value={formik.values.city} className={formik.touched.city && formik.errors.city ? inputTextStylesError : inputTextStyles2} placeholder="Enter Your City" {...formik.getFieldProps('city')} >
 
@@ -277,7 +288,7 @@ const PageOne = ({ onButtonClick }) => {
                       ) : null}
 
                     </div>
-                    <div className=" flex flex-col  relative  border-b-gray-400">
+                    <div className=" flex flex-col mb-4  relative  border-b-gray-400">
                       <label htmlFor="country" className={inpLableSty} >Country</label>
                       <Field id="country" name="country" as='select' value={formik.values.country} className={formik.touched.country && formik.errors.country ? inputTextStylesError : inputTextStyles2} placeholder="Select Your Country" {...formik.getFieldProps('country')} >
 
@@ -286,11 +297,13 @@ const PageOne = ({ onButtonClick }) => {
                         <option value="singapur">Singapur</option>
 
                       </Field>
-                      {formik.touched.state && formik.errors.state ? (
-                        <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors.state}</div>
+                      {formik.touched.country && formik.errors.country ? (
+                        <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors.country}</div>
                       ) : null}
 
                     </div>
+
+                    
 
                     <div className=" flex flex-col  relative  border-b-gray-400">
 

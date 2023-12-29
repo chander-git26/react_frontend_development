@@ -5,3 +5,7 @@
     flex-direction: row;
     justify-content: space-between;
 }
+
+.option{
+    margin-right:15 px ;
+}
