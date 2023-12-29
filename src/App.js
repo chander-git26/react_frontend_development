@@ -10,6 +10,7 @@ import LoginPage from './components/pages/LoginPage';
 import SignupPage from './components/pages/SignupPage';
 import UserForm from './components/pages/UserForm';
 import DashboardPage from './components/pages/DashboardPage';
+import ForgotPasswordPage from './components/pages/ForgotPasswordPage';
 
 const router = createBrowserRouter([
 
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: '/login',
         element: <LoginPage />
+      },
+      {
+        path: '/forgotpassword',
+        element: <ForgotPasswordPage/>
       },
 
       {

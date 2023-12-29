@@ -81,7 +81,11 @@ const navigate = useNavigate()
 
                
                   <button type="submit" className='border border-blue-400 px-5 py-2 mt-5 rounded-full hover:shadow-lg w-full  hover:shadow-blue-200 hover:bg-blue-700 transition-colors bg-blue-600 text-sm font-semibold text-white self-center '>Submit</button>
+                    <div className="flex justify-between">
+
                   <div className='text-sm text-center py-2 '>New user? <span className='text-blue-600 font-semibold'><Link to={'/'}>Signup</Link></span></div>
+                  <div className='text-sm text-center py-2 '> <span className='text-blue-600 font-semibold text-xs'><Link to={'/forgotpassword'}>Forgot Password</Link></span></div>
+                    </div>
                 </Form>)}
             </Formik>
           </div>
