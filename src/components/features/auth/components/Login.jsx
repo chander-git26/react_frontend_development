@@ -13,10 +13,10 @@ import LoginSideconent from '../../../content/LoginSidecontent'
 const Login = () => {
 
 
-// const userdata = useSelector(selectLoggedInUser)  
+const userdata = useSelector(selectLoggedInUser)  
 
  const [authUser] = useLazyGetUserDataQuery()
-
+console.log(userdata);
 
 const dispatch = useDispatch()
 const navigate = useNavigate()
@@ -32,8 +32,8 @@ const navigate = useNavigate()
 
             <Formik
               initialValues={{
-                email: 'pavan@gmail.com',
-                password: 'Asdf@1234',
+                email: 'k.preetham@gmail.com',
+                password: 'A@sdf1234',
               
               }}
               validationSchema={Yup.object({
@@ -42,8 +42,9 @@ const navigate = useNavigate()
 
               })}
               onSubmit={async (values) => {
-                await authUser(values).then(res=>dispatch(addUserData(res.data[0]))
-                )
+                console.log(values);
+                await authUser(values).then(res=>dispatch(addUserData(res.data.data)))
+                
                 navigate('/dashboard')
               }}
             >

@@ -56,7 +56,7 @@ function Header() {
                                 </div>
 
                             </div>
-                            <button className={primarybtn+''} onClick={() => { logoutHandler() }}><i class="bi bi-box-arrow-right"></i></button>
+                            <button className={primarybtn+''} onClick={() => { logoutHandler() }}><i class="bi bi-box-arrow-right"> Logout</i></button>
                            
                         </div>
 

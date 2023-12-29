@@ -12,7 +12,7 @@ const InitialDashboard = () => {
 
     return (
         <div className=' relative  flex-1 flex flex-col justify-center items-center gap-6'>
-            <h1 className='text-2xl' > Hi <span className='font-bold text-blue-600'>{userstatus.lastName}</span></h1>
+            <h1 className='text-2xl' > Hi <span className='font-bold text-blue-600'>{userstatus.firstname}</span></h1>
 
             <h1 className='text-3xl font-bold  text-center leading-10	'>
                 You are at Rightplace to <br /> Get Best <br />

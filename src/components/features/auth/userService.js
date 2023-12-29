@@ -3,12 +3,13 @@ import { BASEURL } from '../../../utilities/constants'
  
 export const userApi = createApi({
   reducerPath: 'userApi',
-  baseQuery: fetchBaseQuery({ baseUrl: `${BASEURL}` }),
+  baseQuery: fetchBaseQuery({ baseUrl: `${BASEURL}/user` }),
   endpoints: (builder) => ({
     getUserData: builder.query({
-      query: ({ email,password }) => ({
-        url: `/users?email=${email}&password=${password}`,
-        method: 'GET',
+      query: (body) => ({
+        url: `/signIn`,
+        method: 'POST',
+        body:{...body}
       }),
     }),
     postUserProfession: builder.mutation({

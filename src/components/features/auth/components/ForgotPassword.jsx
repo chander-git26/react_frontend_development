@@ -1,9 +1,24 @@
-import React from 'react'
+
+import React, { useEffect, useState } from 'react'
+import RequestPassword from './RequestPassword';
+import CreatePassword from './CreatePassword';
+
 
 const ForgotPassword = () => {
-  return (
-    <div>ForgotPassword</div>
-  )
+
+    const [authOtp,setAuthOtp]=useState(false)
+    
+  
+ 
+
+    return (
+        <>
+        {
+            authOtp?<CreatePassword/>:<RequestPassword setAuthOtp={setAuthOtp}/>
+        }
+        </>
+    )
+
 }
 
 export default ForgotPassword

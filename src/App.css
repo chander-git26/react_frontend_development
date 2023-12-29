@@ -1,0 +1,4 @@
+.btnDis:disabled{
+    background-color: gray;
+    border: gray;
+}
