@@ -7,6 +7,7 @@ import { gstRegExp } from "../../../../../utilities/constants";
 import { usePostUserProfessionMutation } from "../../../auth/userService";
 import { useSelector } from "react-redux";
 import { selectLoggedInUser } from "../../../auth/userSlice";
+import { postProfessionalInfo } from "../../userInfoAPI";
 
 
 const PageTwo = ({ onButtonClick }) => {
@@ -71,19 +72,20 @@ const PageTwo = ({ onButtonClick }) => {
               await new Promise((r) => setTimeout(r, 500));
               if(values.sourceOfIncome==="employment"){
                 const temp = {
-                  id:user.id,
                   profession:{
+                    id:user.userId,
                     sourceOfIncome:values.sourceOfIncome,
                     companyName: values.profession.companyName,
                     annualIncome:values.profession.annualIncome,
                     investAmount:values.profession.employment_spare_amount ,}
-                }
-                postProffession(temp)
-                // alert(JSON.stringify(temp))
+                  }
+                  alert(JSON.stringify(temp))
+                  await  postProfessionalInfo(temp.profession)
                 onButtonClick("pagethree")
               }
               if(values.sourceOfIncome==="business"){
                 const temp = {
+                  id:user.userId,
                   sourceOfIncome:values.sourceOfIncome,
                   businessName: values.profession.businessName,
                   businessAnnualRevenue:values.profession.businessAnnualRevenue,
@@ -92,6 +94,7 @@ const PageTwo = ({ onButtonClick }) => {
                   gstNumber: values.profession.gstNumber
                 }
                 alert(JSON.stringify(temp))
+                await postProfessionalInfo(temp)
                 onButtonClick("pagethree")
               }
 
