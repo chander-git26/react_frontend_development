@@ -24,22 +24,22 @@ const PageFour = ({ onButtonClick }) => {
             initialValues={{
 
              
-              blood_group: '',
-              current_treatments: '',
-              past_surgeries: '',
-              covid_status: '',
+              bloodGroup: '',
+              currentTreatments: '',
+              pastSurgeries: '',
+              covidStatus: '',
               
 
             }}
             validationSchema={Yup.object({
               
-				blood_group: Yup.string()
+              bloodGroup: Yup.string()
                 .required(),
               
-				current_treatments: Yup.string(),
-				 past_surgeries: Yup.string(),
-				covid_status: Yup.string(),
-              
+                currentTreatments: Yup.string(),
+        pastSurgeries: Yup.string(),
+				covidStatus: Yup.string(),
+        
 
             })}
             onSubmit={async (values) => {
@@ -77,14 +77,14 @@ const PageFour = ({ onButtonClick }) => {
                           </div>
                         </div>
                       </div>
-                      {['High Blood Pressure', 'Diabetes', 'Heart Stroke', 'Asthma', 'Other'].map((disease) => (
+                      {['Bp', 'Diabetes', 'HeartStroke', 'Asthma', 'Other'].map((disease) => (
                         <div key={`${disease.toLowerCase()}Details`}>
                           {formik.values[`show${disease.toLowerCase()}Details`] && (
                             <>
                               <ul className="flex flex-col gap-5 m-2">
                                 <li className="flexel mt-3">
                                   <div>
-                                    <label className={inpLableSty} htmlFor={`${disease.toLowerCase()}Name`} >
+                                    <label className={inpLableSty} htmlFor={`${disease.toLowerCase()}`} >
                                       Recent Report of {disease}
                                     </label>
                                   </div>
@@ -94,6 +94,7 @@ const PageFour = ({ onButtonClick }) => {
                                       type="file"
                                       className=""
                                       id={`${disease.toLowerCase()}`}
+                                      name={`upload${disease.toLowerCase()}Report`}
                                       onChange={formik.handleChange}
                                       defaultValue={formik.values[`${disease.toLowerCase()}`]}
                                       required
@@ -111,8 +112,8 @@ const PageFour = ({ onButtonClick }) => {
 							  
                 <div className=" flex flex-col  relative  border-b-gray-400">
                   
-                              <label htmlFor="blood_group" className={inpLableSty} >Blood Group</label>
-                              <Field id="blood_group" name="blood_group" as='select' value={formik.values.blood_group} className={formik.touched.blood_group && formik.errors.blood_group ? inputTextStylesError : inputTextStyles2} placeholder="Enter Your City" {...formik.getFieldProps('blood_group')} >
+                              <label htmlFor="bloodGroup" className={inpLableSty} >Blood Group</label>
+                              <Field id="bloodGroup" name="bloodGroup" as='select' value={formik.values.bloodGroup} className={formik.touched.bloodGroup && formik.errors.bloodGroup ? inputTextStylesError : inputTextStyles2} placeholder="Enter Your City" {...formik.getFieldProps('bloodGroup')} >
 
                                 <option disabled value="">Select Blood group</option>
                                 <option value="a+">A+</option>
@@ -125,8 +126,8 @@ const PageFour = ({ onButtonClick }) => {
                                 <option value="ab-">AB-</option>
 
                               </Field>
-                              {formik.touched.blood_group && formik.errors.blood_group ? (
-                                <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors.blood_group}</div>
+                              {formik.touched.bloodGroup && formik.errors.bloodGroup ? (
+                                <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors.bloodGroup}</div>
                               ) : null}
 
                   </div>
@@ -134,10 +135,10 @@ const PageFour = ({ onButtonClick }) => {
 
                 <div className="flex-1">
                         <div className=" flex flex-col  relative  border-b-gray-400">
-                          <label htmlFor="current_treatments" className={inpLableSty} >Current Treatments :</label>
-                          <Field id="current_treatments" name="current_treatments" value={formik.values.current_treatments} className={formik.touched.current_treatments && formik.errors.current_treatments ? inputTextStylesError : inputTextStyles2} placeholder="Enter about Your current treatments(if any)" {...formik.getFieldProps('current_treatments')} />
-                          {formik.touched.current_treatments && formik.errors.current_treatments ? (
-                            <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors.current_treatments}</div>
+                          <label htmlFor="currentTreatments" className={inpLableSty} >Current Treatments :</label>
+                          <Field id="currentTreatments" name="currentTreatments" value={formik.values.currentTreatments} className={formik.touched.currentTreatments && formik.errors.currentTreatments ? inputTextStylesError : inputTextStyles2} placeholder="Enter about Your current treatments(if any)" {...formik.getFieldProps('currentTreatments')} />
+                          {formik.touched.currentTreatments && formik.errors.currentTreatments ? (
+                            <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors.currentTreatments}</div>
                           ) : null}
 
                         </div>
@@ -146,10 +147,10 @@ const PageFour = ({ onButtonClick }) => {
 
                 <div className="flex-1">
                         <div className=" flex flex-col  relative  border-b-gray-400">
-                          <label htmlFor="past_surgeries" className={inpLableSty} >Past Surgeries :</label>
-                          <Field id="past_surgeries" name="past_surgeries" value={formik.values.past_surgeries} className={formik.touched.past_surgeries && formik.errors.past_surgeries ? inputTextStylesError : inputTextStyles2} placeholder="Enter about Your past surgeries(if any)" {...formik.getFieldProps('past_surgeries')} />
-                          {formik.touched.past_surgeries && formik.errors.past_surgeries ? (
-                            <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors.past_surgeries}</div>
+                          <label htmlFor="pastSurgeries" className={inpLableSty} >Past Surgeries :</label>
+                          <Field id="pastSurgeries" name="pastSurgeries" value={formik.values.pastSurgeries} className={formik.touched.pastSurgeries && formik.errors.pastSurgeries ? inputTextStylesError : inputTextStyles2} placeholder="Enter about Your past surgeries(if any)" {...formik.getFieldProps('pastSurgeries')} />
+                          {formik.touched.pastSurgeries && formik.errors.pastSurgeries ? (
+                            <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors.pastSurgeries}</div>
                           ) : null}
 
                         </div>
@@ -158,10 +159,10 @@ const PageFour = ({ onButtonClick }) => {
 
                 <div className="flex-1">
                         <div className=" flex flex-col  relative  border-b-gray-400">
-                          <label htmlFor="covid_status" className={inpLableSty} >Covid Status :</label>
-                          <Field id="covid_status" name="covid_status" value={formik.values.covid_status} className={formik.touched.covid_status && formik.errors.covid_status ? inputTextStylesError : inputTextStyles2} placeholder="Enter about Your covid status(past 3 months)" {...formik.getFieldProps('covid_status')} />
-                          {formik.touched.covid_status && formik.errors.covid_status ? (
-                            <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors.covid_status}</div>
+                          <label htmlFor="covidStatus" className={inpLableSty} >Covid Status :</label>
+                          <Field id="covidStatus" name="covidStatus" value={formik.values.covidStatus} className={formik.touched.covidStatus && formik.errors.covidStatus ? inputTextStylesError : inputTextStyles2} placeholder="Enter about Your covid status(past 3 months)" {...formik.getFieldProps('covidStatus')} />
+                          {formik.touched.covidStatus && formik.errors.covidStatus ? (
+                            <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors.covidStatus}</div>
                           ) : null}
 
                         </div>

@@ -51,35 +51,35 @@ const PageThree = ({ onButtonClick }) => {
               showMotherDetails: false,
               showSpouseDetails: false,
               showOthersDetails: false,
-              father_name: '',
-              father_age: '',
-              father_occupation: '',
-              mother_name: '',
-              mother_age: '',
-              mother_occupation: '',
-              spouse_name: '',
-              spouse_age: '',
-              spouse_occupation: '',
-              others_name: '',
-              others_age: '',
-              others_occupation: '',
+              fatherName: '',
+              fatherAge: '',
+              fatherOccupation: '',
+              motherName: '',
+              motherAge: '',
+              motherOccupation: '',
+              spouseName: '',
+              spouseAge: '',
+              spouseOccupation: '',
+              otherName: '',
+              otherAge: '',
+              otherOccupation: '',
  
  
             }}
             validationSchema={Yup.object({
  
-              father_name: Yup.string(),
-              father_age: Yup.string(),
-              father_occupation: Yup.string(),
-              mother_name: Yup.string(),
-              mother_age: Yup.string(),
-              mother_occupation: Yup.string(),
-              spouse_name: Yup.string(),
-              spouse_age: Yup.string(),
-              spouse_occupation: Yup.string(),
-              others_name: Yup.string(),
-              others_age: Yup.string(),
-              others_occupation: Yup.string(),
+              fatherName: Yup.string(),
+              fatherAge: Yup.string(),
+              fatherOccupation: Yup.string(),
+              motherName: Yup.string(),
+              motherAge: Yup.string(),
+              motherOccupation: Yup.string(),
+              spouseName: Yup.string(),
+              spouseAge: Yup.string(),
+              spouseOccupation: Yup.string(),
+              otherName: Yup.string(),
+              otherAge: Yup.string(),
+              otherOccupation: Yup.string(),
  
  
  
@@ -134,7 +134,7 @@ const PageThree = ({ onButtonClick }) => {
  
                           <div className="flex">
  
-                {['Father', 'Mother', 'Spouse', 'Other'].map((relationship) => (
+                {['father', 'mother', 'spouse', 'other'].map((relationship) => (
                  
                   <div key={`${relationship.toLowerCase()}Details`} >
                     {formik.values[`show${relationship}Details`] && (
@@ -183,7 +183,7 @@ const PageThree = ({ onButtonClick }) => {
                            
                            
                             id={`${relationship.toLowerCase()}Age`}
-                            age={`${relationship.toLowerCase()}Age`}
+                            name={`${relationship.toLowerCase()}Age`}
                             onChange={formik.handleChange}
                             value={formik.values[`${relationship.toLowerCase()}Age`]}
                             required
@@ -203,7 +203,7 @@ const PageThree = ({ onButtonClick }) => {
                             className={inputTextStyles2+' m-2'}
                             type="text"
                             id={`${relationship.toLowerCase()}Occupation`}
-                            age={`${relationship.toLowerCase()}Occupation`}
+                            name={`${relationship.toLowerCase()}Occupation`}
                             onChange={formik.handleChange}
                             value={formik.values[`${relationship.toLowerCase()}Occupation`]}
                             required
@@ -224,7 +224,7 @@ const PageThree = ({ onButtonClick }) => {
                             className={' m-2'}
                            
                             id={`${relationship.toLowerCase()}MedicalHistory`}
-                            age={`${relationship.toLowerCase()}MedicalHistory`}
+                            name={`${relationship.toLowerCase()}MedicalHistory`}
                             onChange={formik.handleChange}
                             value={formik.values[`${relationship.toLowerCase()}MedicalHistory`]}
                             required

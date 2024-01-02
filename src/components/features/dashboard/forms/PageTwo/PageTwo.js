@@ -27,15 +27,15 @@ const PageTwo = ({ onButtonClick }) => {
           <Formik
 
             initialValues={{
-              source_of_income: '',
+              sourceOfIncome: '',
 
               profession: {
-                company_name: '',
-                annual_income:'',
-                business_name: '',
-                business_type: '',
-                gst_number: '',
-                business_annual_revenue: '',
+                companyName: '',
+                annualIncome:'',
+                businessName: '',
+                businessType: '',
+                gstNumber: '',
+                businessAnnualRevenue: '',
                 employment_spare_amount: '',
                 business_spare_amount: '',
               }
@@ -43,53 +43,53 @@ const PageTwo = ({ onButtonClick }) => {
 
 
             validationSchema={Yup.object({
-              source_of_income: Yup.string().required('Source of Income is required'),
-              profession: Yup.object().when('source_of_income', {
-                is: (source_of_income) => source_of_income === 'business',
+              sourceOfIncome: Yup.string().required('Source of Income is required'),
+              profession: Yup.object().when('sourceOfIncome', {
+                is: (sourceOfIncome) => sourceOfIncome === 'business',
                 then: () => Yup.object({
-                  business_name: Yup.string(),
-                  business_annual_revenue: Yup.number().typeError("Must be a number type").required('Annual revenue is required'),
-                  business_type: Yup.string().required('Business type is required'),
+                  businessName: Yup.string(),
+                  businessAnnualRevenue: Yup.number().typeError("Must be a number type").required('Annual revenue is required'),
+                  businessType: Yup.string().required('Business type is required'),
                   business_spare_amount: Yup.number().typeError("Must be a number type").required('Spare Amount is required'),
-                  gst_number: Yup.string().required('GST Number is required').matches(
+                  gstNumber: Yup.string().required('GST Number is required').matches(
                     gstRegExp,
                     'Invalid GST number'
                   ),
                 }),
 
-              }).when('source_of_income', {
-                is: (source_of_income) => source_of_income === 'employment',
+              }).when('sourceOfIncome', {
+                is: (sourceOfIncome) => sourceOfIncome === 'employment',
                 then: () => Yup.object({
-                  company_name: Yup.string(),
+                  companyName: Yup.string(),
                   employment_spare_amount: Yup.number().typeError("Must be a number type").required(' Spare amount is required'),
-                  annual_income:  Yup.number().typeError("Must be a number type").required("Annual income is required"),
+                  annualIncome:  Yup.number().typeError("Must be a number type").required("Annual income is required"),
                   
                 })
               }),
             })}
               onSubmit={async (values) => {
               await new Promise((r) => setTimeout(r, 500));
-              if(values.source_of_income==="employment"){
+              if(values.sourceOfIncome==="employment"){
                 const temp = {
                   id:user.id,
                   profession:{
-                    source_of_income:values.source_of_income,
-                  company_name: values.profession.company_name,
-                  annual_income:values.profession.annual_income,
-                  spare_amount:values.profession.employment_spare_amount ,}
+                    sourceOfIncome:values.sourceOfIncome,
+                    companyName: values.profession.companyName,
+                    annualIncome:values.profession.annualIncome,
+                    investAmount:values.profession.employment_spare_amount ,}
                 }
                 postProffession(temp)
                 // alert(JSON.stringify(temp))
                 onButtonClick("pagethree")
               }
-              if(values.source_of_income==="business"){
+              if(values.sourceOfIncome==="business"){
                 const temp = {
-                  source_of_income:values.source_of_income,
-                  business_name: values.profession.business_name,
-                  business_annual_revenue:values.profession.business_annual_revenue,
-                  business_type: values.profession.business_type,
-                  business_spare_amount: values.profession.business_spare_amount,
-                  gst_number: values.profession.gst_number
+                  sourceOfIncome:values.sourceOfIncome,
+                  businessName: values.profession.businessName,
+                  businessAnnualRevenue:values.profession.businessAnnualRevenue,
+                  businessType: values.profession.businessType,
+                  investAmount: values.profession.business_spare_amount,
+                  gstNumber: values.profession.gstNumber
                 }
                 alert(JSON.stringify(temp))
                 onButtonClick("pagethree")
@@ -104,16 +104,16 @@ const PageTwo = ({ onButtonClick }) => {
                 <h1 className='text-center text-xl font-bold border-b-2 pb-2 self-center px-4 border-b-blue-600'>Professional Details</h1>
 
                 <div className=" flex flex-col  relative  border-b-gray-400">
-                  <label htmlFor="source_of_income" className={inpLableSty} >Source of Income</label>
-                  <Field id="source_of_income" name="source_of_income" as='select' value={formik.values.source_of_income} className={formik.touched.source_of_income && formik.errors.source_of_income ? inputTextStylesError : inputTextStyles2} placeholder="Enter Your source_of_income" {...formik.getFieldProps('source_of_income')} >
+                  <label htmlFor="sourceOfIncome" className={inpLableSty} >Source of Income</label>
+                  <Field id="sourceOfIncome" name="sourceOfIncome" as='select' value={formik.values.sourceOfIncome} className={formik.touched.sourceOfIncome && formik.errors.sourceOfIncome ? inputTextStylesError : inputTextStyles2} placeholder="Enter Your source Of Income" {...formik.getFieldProps('sourceOfIncome')} >
 
                     <option disabled value="">Select source of income</option>
                     <option value="business">Business</option>
                     <option value="employment">Employment</option>
 
                   </Field>
-                  {formik.touched.source_of_income && formik.errors.source_of_income ? (
-                    <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors.source_of_income}</div>
+                  {formik.touched.sourceOfIncome && formik.errors.sourceOfIncome ? (
+                    <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors.sourceOfIncome}</div>
                   ) : null}
 
 
@@ -121,39 +121,39 @@ const PageTwo = ({ onButtonClick }) => {
                 </div>
 
                 {
-                  formik.values.source_of_income === 'business' && (
+                  formik.values.sourceOfIncome === 'business' && (
                     <>
                       <div className=" flex flex-col  relative  border-b-gray-400">
-                        <label htmlFor="profession.business_name" className={inpLableSty} >Business Name</label>
-                        <Field id="profession.business_name" name="profession.business_name" value={formik.values.profession.business_name}
-                          className={formik.touched?.profession?.business_name && formik.errors?.profession?.business_name ? inputTextStylesError : inputTextStyles2}
-                          placeholder="Enter Your Business name" {...formik.getFieldProps('profession.business_name')} />
+                        <label htmlFor="profession.businessName" className={inpLableSty} >Business Name</label>
+                        <Field id="profession.businessName" name="profession.businessName" value={formik.values.profession.businessName}
+                          className={formik.touched?.profession?.businessName && formik.errors?.profession?.businessName ? inputTextStylesError : inputTextStyles2}
+                          placeholder="Enter Your Business name" {...formik.getFieldProps('profession.businessName')} />
 
-                        {formik.touched?.profession?.business_name && formik.errors?.profession?.business_name ? (
-                          <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors?.profession?.business_name}</div>
+                        {formik.touched?.profession?.businessName && formik.errors?.profession?.businessName ? (
+                          <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors?.profession?.businessName}</div>
                         ) : null}
                       </div>
 
                       <div className=" flex flex-col  relative  border-b-gray-400">
-                        <label htmlFor="business_annual_revenue" className={inpLableSty} >Annual Revenue</label>
-                        <Field id="business_annual_revenue" name="profession.business_annual_revenue" value={formik.values.profession.business_annual_revenue} className={formik.touched?.profession?.business_annual_revenue && formik.errors?.profession?.business_annual_revenue ? inputTextStylesError : inputTextStyles2} placeholder="Enter Your Annual revenue" {...formik.getFieldProps('profession.business_annual_revenue')} />
-                        {formik.touched?.profession?.business_annual_revenue && formik.errors?.profession?.business_annual_revenue ? (
-                          <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors?.profession?.business_annual_revenue}</div>
+                        <label htmlFor="businessAnnualRevenue" className={inpLableSty} >Annual Revenue</label>
+                        <Field id="businessAnnualRevenue" name="profession.businessAnnualRevenue" value={formik.values.profession.businessAnnualRevenue} className={formik.touched?.profession?.businessAnnualRevenue && formik.errors?.profession?.businessAnnualRevenue ? inputTextStylesError : inputTextStyles2} placeholder="Enter Your Annual revenue" {...formik.getFieldProps('profession.businessAnnualRevenue')} />
+                        {formik.touched?.profession?.businessAnnualRevenue && formik.errors?.profession?.businessAnnualRevenue ? (
+                          <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors?.profession?.businessAnnualRevenue}</div>
                         ) : null}
 
                       </div>
 
                       <div className=" flex flex-col  relative  border-b-gray-400">
-                        <label htmlFor="gst_number" className={inpLableSty} >GST number</label>
-                        <Field id="gst_number" name="profession.gst_number" value={formik.values.profession?.gst_number} className={formik.touched.profession?.gst_number && formik.errors.profession?.gst_number ? inputTextStylesError : inputTextStyles2} placeholder="Enter Your Company GST number" {...formik.getFieldProps('profession.gst_number')} />
-                        {formik.touched.profession?.gst_number && formik.errors.profession?.gst_number ? (
-                          <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors.profession?.gst_number}</div>
+                        <label htmlFor="gstNumber" className={inpLableSty} >GST number</label>
+                        <Field id="gstNumber" name="profession.gstNumber" value={formik.values.profession?.gstNumber} className={formik.touched.profession?.gstNumber && formik.errors.profession?.gstNumber ? inputTextStylesError : inputTextStyles2} placeholder="Enter Your Company GST number" {...formik.getFieldProps('profession.gstNumber')} />
+                        {formik.touched.profession?.gstNumber && formik.errors.profession?.gstNumber ? (
+                          <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors.profession?.gstNumber}</div>
                         ) : null}
 
                       </div>
                       <div className=" flex flex-col  relative  border-b-gray-400">
-                        <label htmlFor="business_type" className={inpLableSty} >Business Type</label>
-                        <Field id="business_type" name="profession.business_type" as='select' value={formik.values.profession?.business_type} className={formik.touched.profession?.business_type && formik.errors.profession?.business_type ? inputTextStylesError : inputTextStyles2} placeholder="Enter Your City" {...formik.getFieldProps('profession.business_type')} >
+                        <label htmlFor="businessType" className={inpLableSty} >Business Type</label>
+                        <Field id="businessType" name="profession.businessType" as='select' value={formik.values.profession?.businessType} className={formik.touched.profession?.businessType && formik.errors.profession?.businessType ? inputTextStylesError : inputTextStyles2} placeholder="Enter Your City" {...formik.getFieldProps('profession.businessType')} >
 
                           <option disabled value="">Select Business type</option>
                           <option value="privatelimited">Private Limited</option>
@@ -162,8 +162,8 @@ const PageTwo = ({ onButtonClick }) => {
                           <option value="corporation">Corporation</option>
 
                         </Field>
-                        {formik.touched.profession?.business_type && formik.errors.profession?.business_type ? (
-                          <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors.profession?.business_type}</div>
+                        {formik.touched.profession?.businessType && formik.errors.profession?.businessType ? (
+                          <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors.profession?.businessType}</div>
                         ) : null}
                       </div>
 
@@ -180,25 +180,25 @@ const PageTwo = ({ onButtonClick }) => {
                   )
                 }
                 {
-                  formik.values.source_of_income === 'employment' && (
+                  formik.values.sourceOfIncome === 'employment' && (
                     <>
                       <div className=" flex flex-col  relative  border-b-gray-400">
-                        <label htmlFor="profession.company_name" className={inpLableSty} >Company Name</label>
-                        <Field id="profession.company_name" name="profession.company_name" value={formik.values.profession.company_name}
-                          className={formik.touched?.profession?.company_name && formik.errors?.profession?.company_name ? inputTextStylesError : inputTextStyles2}
-                          placeholder="Enter Your Company name" {...formik.getFieldProps('profession.company_name')} />
+                        <label htmlFor="profession.companyName" className={inpLableSty} >Company Name</label>
+                        <Field id="profession.companyName" name="profession.companyName" value={formik.values.profession.companyName}
+                          className={formik.touched?.profession?.companyName && formik.errors?.profession?.companyName ? inputTextStylesError : inputTextStyles2}
+                          placeholder="Enter Your Company name" {...formik.getFieldProps('profession.companyName')} />
 
-                        {formik.touched?.profession?.company_name && formik.errors?.profession?.company_name ? (
-                          <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors?.profession?.company_name}</div>
+                        {formik.touched?.profession?.companyName && formik.errors?.profession?.companyName ? (
+                          <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors?.profession?.companyName}</div>
                         ) : null}
                       </div>
 
                       
                       <div className=" flex flex-col  relative  border-b-gray-400">
-                        <label htmlFor="annual_income" className={inpLableSty} >Annual Income</label>
-                        <Field id="annual_income" name="profession.annual_income" value={formik.values.profession.annual_income} className={formik.touched?.profession?.annual_income && formik.errors?.profession?.annual_income ? inputTextStylesError : inputTextStyles2} placeholder="Enter Your Annual Income" {...formik.getFieldProps('profession.annual_income')} />
-                        {formik.touched?.profession?.annual_income && formik.errors?.profession?.annual_income ? (
-                          <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors?.profession?.annual_income}</div>
+                        <label htmlFor="annualIncome" className={inpLableSty} >Annual Income</label>
+                        <Field id="annualIncome" name="profession.annualIncome" value={formik.values.profession.annualIncome} className={formik.touched?.profession?.annualIncome && formik.errors?.profession?.annualIncome ? inputTextStylesError : inputTextStyles2} placeholder="Enter Your Annual Income" {...formik.getFieldProps('profession.annualIncome')} />
+                        {formik.touched?.profession?.annualIncome && formik.errors?.profession?.annualIncome ? (
+                          <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors?.profession?.annualIncome}</div>
                         ) : null}
 
                       </div>
