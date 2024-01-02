@@ -62,7 +62,7 @@ const PageFour = ({ onButtonClick }) => {
                             <label  className={inpLableSty} htmlFor="preExistingConditionsLabel">Pre-existing Conditions</label>
                           </div>
                           <div className="checkbox">
-                            {['High Blood Pressure', 'Diabetes', 'Heart Stroke', 'Asthma', 'Other'].map((disease) => (
+                            {['BP', 'Diabetes', 'HeartStroke', 'Asthma', 'Other'].map((disease) => (
                               <label key={disease} className={inpLableSty} htmlFor={`show${disease.toLowerCase()}Details`}>
                                 <input
                                   type="checkbox"

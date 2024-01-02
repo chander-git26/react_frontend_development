@@ -134,7 +134,7 @@ const PageThree = ({ onButtonClick }) => {
  
                           <div className="flex">
  
-                {['father', 'mother', 'spouse', 'other'].map((relationship) => (
+                {['Father', 'Mother', 'Spouse', 'Other'].map((relationship) => (
                  
                   <div key={`${relationship.toLowerCase()}Details`} >
                     {formik.values[`show${relationship}Details`] && (
