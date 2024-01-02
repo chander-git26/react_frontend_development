@@ -15,7 +15,7 @@ const InitialDashboard = () => {
             <h1 className='text-2xl' > Hi <span className='font-bold text-blue-600'>{userstatus.firstname}</span></h1>
 
             <h1 className='text-3xl font-bold  text-center leading-10	'>
-                You are at Rightplace to <br /> Get Best <br />
+                You are at Rightplace to  Get Best <br />
                 <span className='text-blue-600 text-5xl'>Insurance policies</span>
             </h1>
             <div className='flex items-center  '>

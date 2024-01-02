@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./PageOne.css";
 import { errorText, inpLableSty, inputTextStyles2, inputTextStylesError } from "../../../../../utilities/styleclasses";
 import { Field, Formik, Form } from 'formik';
@@ -6,10 +6,21 @@ import * as Yup from 'yup';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { calIcon } from "../../../../../utilities/icons";
+import axios from "axios";
+import { postPersonalInfo } from "../../userInfoAPI";
+import { selectLoggedInUser } from "../../../auth/userSlice";
+import { useSelector } from "react-redux";
 
 
 
 const PageOne = ({ onButtonClick }) => {
+  const userstatus = useSelector(selectLoggedInUser)
+
+console.log(userstatus);
+
+ 
+
+
 
   return (
     <div className='flex flex-1 items-center justify-center gap-16'>
@@ -25,7 +36,6 @@ const PageOne = ({ onButtonClick }) => {
               dateOfBirth: '',
               state: '',
               city: '',
-           
               maritalStatus: '',
               height: '',
               alcohol: '',
@@ -50,7 +60,7 @@ const PageOne = ({ onButtonClick }) => {
               state: Yup.string()
                 .required(),
               city: Yup.string(),
-              height: Yup.string(),
+              height: Yup.number(),
               maritalStatus: Yup.string()
                 .required(),
               weight: Yup.number().typeError("Must be a number type"),
@@ -63,10 +73,12 @@ const PageOne = ({ onButtonClick }) => {
             })}
             onSubmit={async (values) => {
               await new Promise((r) => setTimeout(r, 500));
+              
               alert(JSON.stringify(values))
+              const temp = {id:userstatus.userId,...values}
+              await postPersonalInfo(temp)
               onButtonClick("pagetwo")
-
-
+              console.log(temp);
             }}
           >
             {formik => (
@@ -148,7 +160,7 @@ const PageOne = ({ onButtonClick }) => {
                         <Field id="height" name="height" as='select' value={formik.values.height} className={formik.touched.height && formik.errors.height ? inputTextStylesError : inputTextStyles2} placeholder="Enter Your City" {...formik.getFieldProps('height')} >
 
                           <option disabled value="">Select height</option>
-                          <option value="4.8">4.8 ft</option>
+                          <option value={4}>4 ft</option>
                           <option value="4.9">4.9 ft</option>
                           <option value="4.10">4.10 ft</option>
                           <option value="4.11">4.11 ft</option>
