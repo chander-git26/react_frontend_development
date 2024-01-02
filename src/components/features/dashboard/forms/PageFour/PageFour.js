@@ -3,11 +3,16 @@ import "./PageFour.css";
 import { errorText, inpLableSty, inputTextStyles2, inputTextStylesError } from "../../../../../utilities/styleclasses";
 import { Field, Formik, Form } from 'formik';
 import * as Yup from 'yup';
+import { postMedicalInfo } from "../../userInfoAPI";
+import { selectLoggedInUser } from "../../../auth/userSlice";
+import { useSelector } from "react-redux";
 
 
 
 
 const PageFour = ({ onButtonClick }) => {
+  const user =  useSelector(selectLoggedInUser)
+
 
   
   const showDetails = (type, value, formik) => {
@@ -45,7 +50,8 @@ const PageFour = ({ onButtonClick }) => {
             onSubmit={async (values) => {
               await new Promise((r) => setTimeout(r, 500));
               alert(JSON.stringify(values));
-              onButtonClick("pagethree")
+              await postMedicalInfo({id:user.userId,...values})
+              // onButtonClick("pagethree")
 
 
             }}
@@ -62,13 +68,13 @@ const PageFour = ({ onButtonClick }) => {
                             <label  className={inpLableSty} htmlFor="preExistingConditionsLabel">Pre-existing Conditions</label>
                           </div>
                           <div className="checkbox">
-                            {['BP', 'Diabetes', 'HeartStroke', 'Asthma', 'Other'].map((disease) => (
-                              <label key={disease} className={inpLableSty} htmlFor={`show${disease.toLowerCase()}Details`}>
+                            {['Bp', 'Diabetes', 'HeartStroke', 'Asthma', 'Other'].map((disease) => (
+                              <label key={disease} className={inpLableSty} htmlFor={`show${disease}Details`}>
                                 <input
                                   type="checkbox"
-                                  id={`show${disease.toLowerCase()}Details`}
-                                  name={`show${disease.toLowerCase()}Details`}
-                                  onChange={() => showDetails(`show${disease.toLowerCase()}Details`, !formik.values[`show${disease.toLowerCase()}Details`], formik)}
+                                  id={`show${disease}Details`}
+                                  name={`show${disease}Details`}
+                                  onChange={() => showDetails(`show${disease}Details`, !formik.values[`show${disease}Details`], formik)}
                                   className="m-1"
                                 />
                                 {disease}
@@ -78,13 +84,13 @@ const PageFour = ({ onButtonClick }) => {
                         </div>
                       </div>
                       {['Bp', 'Diabetes', 'HeartStroke', 'Asthma', 'Other'].map((disease) => (
-                        <div key={`${disease.toLowerCase()}Details`}>
-                          {formik.values[`show${disease.toLowerCase()}Details`] && (
+                        <div key={`${disease}Details`}>
+                          {formik.values[`show${disease}Details`] && (
                             <>
                               <ul className="flex flex-col gap-5 m-2">
                                 <li className="flexel mt-3">
                                   <div>
-                                    <label className={inpLableSty} htmlFor={`${disease.toLowerCase()}`} >
+                                    <label className={inpLableSty} htmlFor={`${disease}`} >
                                       Recent Report of {disease}
                                     </label>
                                   </div>
@@ -93,10 +99,10 @@ const PageFour = ({ onButtonClick }) => {
                                     <input
                                       type="file"
                                       className=""
-                                      id={`${disease.toLowerCase()}`}
-                                      name={`upload${disease.toLowerCase()}Report`}
+                                      id={`${disease}`}
+                                      name={`upload${disease}Report`}
                                       onChange={formik.handleChange}
-                                      defaultValue={formik.values[`${disease.toLowerCase()}`]}
+                                      defaultValue={formik.values[`${disease}`]}
                                       required
                                     />
                                   </div>

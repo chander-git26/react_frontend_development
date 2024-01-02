@@ -140,7 +140,7 @@ console.log(userstatus);
                           Married
                         </label>
                         <label className={inpLableSty}>
-                          <Field type="radio" name="maritalStatus" value="no" /> {" "}
+                          <Field type="radio" name="maritalStatus" value="single" /> {" "}
                           Single
                         </label>
 
