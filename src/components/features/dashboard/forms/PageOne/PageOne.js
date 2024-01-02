@@ -22,11 +22,11 @@ const PageOne = ({ onButtonClick }) => {
 
               address: '',
               gender: 'male',
-              date_of_birth: '',
+              dateOfBirth: '',
               state: '',
               city: '',
            
-              marital_status: '',
+              maritalStatus: '',
               height: '',
               alcohol: '',
               smoking: '',
@@ -39,7 +39,7 @@ const PageOne = ({ onButtonClick }) => {
                 .max(20, 'Must be 15 characters or less'),
               gender: Yup.string()
                 .required(),
-              date_of_birth: Yup.date().nullable()
+                dateOfBirth: Yup.date().nullable()
               .test('dob', 'Should be Older than 18', function (value, ctx) {
                 const dob = new Date(value);
                 const validDate = new Date();
@@ -51,7 +51,7 @@ const PageOne = ({ onButtonClick }) => {
                 .required(),
               city: Yup.string(),
               height: Yup.string(),
-              marital_status: Yup.string()
+              maritalStatus: Yup.string()
                 .required(),
               weight: Yup.number().typeError("Must be a number type"),
               alcohol:Yup.string()
@@ -109,12 +109,12 @@ const PageOne = ({ onButtonClick }) => {
 
 
                       <div id="my-radio-group" className={inpLableSty}>Date of Birth</div>
-                      <Field name="date_of_birth"  type='date'    className={formik.touched.date_of_birth && formik.errors.date_of_birth ? inputTextStylesError : inputTextStyles2}  {...formik.getFieldProps('date_of_birth')}>
+                      <Field name="dateOfBirth"  type='date'    className={formik.touched.dateOfBirth && formik.errors.dateOfBirth ? inputTextStylesError : inputTextStyles2}  {...formik.getFieldProps('dateOfBirth')}>
                
                       </Field>
                 
-                      {formik.touched.date_of_birth && formik.errors.date_of_birth ? (
-                        <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors.date_of_birth}</div>
+                      {formik.touched.dateOfBirth && formik.errors.dateOfBirth ? (
+                        <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors.dateOfBirth}</div>
                       ) : null}
                     </div>
 
@@ -124,18 +124,18 @@ const PageOne = ({ onButtonClick }) => {
                       <div id="my-radio-group" className={inpLableSty}>Marital Status :</div>
                       <div role="group" className="flex flex-row gap-1" aria-labelledby="my-radio-group">
                         <label className={inpLableSty}>
-                          <Field type="radio" name="marital_status" value="married" /> {" "}
+                          <Field type="radio" name="maritalStatus" value="married" /> {" "}
                           Married
                         </label>
                         <label className={inpLableSty}>
-                          <Field type="radio" name="marital_status" value="no" /> {" "}
+                          <Field type="radio" name="maritalStatus" value="no" /> {" "}
                           Single
                         </label>
 
 
                       </div>
-                      {formik.touched.marital_status && formik.errors.marital_status ? (
-                        <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors.marital_status}</div>
+                      {formik.touched.maritalStatus && formik.errors.maritalStatus ? (
+                        <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors.maritalStatus}</div>
                       ) : null}
 
                     </div>
