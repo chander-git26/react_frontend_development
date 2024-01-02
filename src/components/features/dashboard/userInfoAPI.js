@@ -55,7 +55,7 @@ export const postMedicalInfo = async(body)=>{
                 // 'Content-Type': "application/json;odata=verbose",
                 "Content-Type":'multipart/form-data'
             },
-            data:{...body}
+            data:body
           }
         )
 }

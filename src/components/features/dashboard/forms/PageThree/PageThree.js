@@ -22,7 +22,7 @@ const PageThree = ({ onButtonClick }) => {
       if (checkboxes[i].checked) {
         checkedCount++;
       }
-      console.log(checkboxes);
+      // console.log(checkboxes);
     }
    
     if (checkedCount > 2) {
