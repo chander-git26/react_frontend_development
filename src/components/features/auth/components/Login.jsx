@@ -47,7 +47,13 @@ const navigate = useNavigate()
               })}
               onSubmit={async (values) => {
                 console.log(values);
-                await authUser(values).then(res=>dispatch(addUserData(res.data.data)))
+                try{
+
+                  await authUser(values).then(res=>dispatch(addUserData(res.data.data))).catch(err=>console.log(err))
+                }
+                catch(e){
+                  console.log(e);
+                }
                 
                 navigate('/dashboard')
               }}
