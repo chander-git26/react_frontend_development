@@ -38,7 +38,10 @@ useEffect(()=>{
     )
     .then(function (response) {
     
-    response.data===2&&navigate('/login')
+    response.data===200 && alert("New Registration successful") 
+    })
+    .then(function(response) {
+      navigate('/login')
     })
     .catch(function (error) {
       console.log(error);
