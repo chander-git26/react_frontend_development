@@ -1,5 +1,6 @@
 import axios from "axios"
 const SAVE_PERSONAL_BASEURL = 'http://localhost:8280/user/savePersonalInformation'
+const FETCH_PERSONAL_BASEURL = 'http://localhost:8280/user/savePersonalInformation'
 const SAVE_PROFESSIONAL_BASEURL = 'http://localhost:8280/user/saveProfessionalInformation'
 const SAVE_FAMILY_BASEURL = 'http://localhost:8280/user/saveFamilyInformation'
 const SAVE_MEDICAL_BASEURL = 'http://localhost:8280/user/saveMedicalInformation'

@@ -5,14 +5,13 @@ export const userApi = createApi({
   reducerPath: 'userApi',
   baseQuery: fetchBaseQuery({ baseUrl: `${BASEURL}/user` }),
   endpoints: (builder) => ({
-    getUserData: builder.query({
+    getPersonalDetails: builder.query({
       query: (body) => ({
         url: `/signIn`,
         method: 'POST',
         body:{...body}
       }),
     }),
-    
   }),
 })
  
