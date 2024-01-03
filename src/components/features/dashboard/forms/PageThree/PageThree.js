@@ -96,11 +96,29 @@ const PageThree = ({ onButtonClick }) => {
               await new Promise((r) => setTimeout(r, 500));
               const temp = {id:userstatus.userId,...values}
               console.log(temp);
-              await postFamilyInfo(temp)
+
+              const formData = new FormData();
+              formData.append("fatherName", values.fatherName?values.fatherName:null);
+              formData.append("fatherAge", values.fatherAge?values.fatherAge:null);
+              formData.append("fatherOccupation", values.fatherOccupation?values.fatherOccupation:null);
+              formData.append("motherAge", values.motherAge?values.motherAge:null);
+              formData.append("motherName", values.motherName?values.motherName:null);
+              formData.append("motherOccupation", values.motherOccupation?values.motherOccupation:null);
+              formData.append("spouseName", values.spouseName?values.spouseName:null);
+              formData.append("spouseAge", values.spouseAge?values.spouseAge:null);
+              formData.append("spouseOccupation", values.spouseOccupation?values.spouseOccupation:null);
+              formData.append("otherName", values.otherName?values.otherName:null);
+              formData.append("otherAge", values.otherAge?values.otherAge:null);
+              formData.append("otherOccupation", values.otherOccupation?values.otherOccupation:null);
+              formData.append("id",userstatus.userId );
+              for (const keys of formData.entries()) {
+                console.log(keys);
+              }
+              await postFamilyInfo(formData)
 
 
 
-              onButtonClick("pagefour");
+              // onButtonClick("pagefour");
             }}
           >
             {(formik) => (
@@ -136,6 +154,7 @@ const PageThree = ({ onButtonClick }) => {
                             />
                             {relationship}
                           </label>
+
                         ))}
                       </div>
                     </div>
@@ -176,6 +195,7 @@ const PageThree = ({ onButtonClick }) => {
                             value={formik.values[`${relationship.toLowerCase()}Name`]}
                             required
                             />
+
                             </div>
                         </li>
  
@@ -200,6 +220,10 @@ const PageThree = ({ onButtonClick }) => {
                             value={formik.values[`${relationship.toLowerCase()}Age`]}
                             required
                             />
+                             {/* {formik.touched.relationship.toLowerCase()+"age" && formik.errors.relationship.toLowerCase()+"age" ? (
+                              <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors.relationship.toLowerCase()+"age"}</div>
+                            ) : null} */}
+
                             </div>
                         </li>
  

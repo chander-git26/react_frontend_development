@@ -12,6 +12,13 @@ export const userApi = createApi({
         body:{...body}
       }),
     }),
+    postUserProfession: builder.mutation({
+      query: (body) => ({
+        url: `/users/${body.id}`,
+        method: 'PATCH',
+        body:{...body.profession}
+      }),
+    }),
   }),
 })
  
