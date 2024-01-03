@@ -77,16 +77,16 @@ const PageThree = ({ onButtonClick }) => {
             validationSchema={Yup.object({
  
               fatherName: Yup.string(),
-              fatherAge: Yup.string(),
+              fatherAge: Yup.number().typeError("Must be a number "),
               fatherOccupation: Yup.string(),
               motherName: Yup.string(),
-              motherAge: Yup.string(),
+              motherAge:Yup.number().typeError("Must be a number "),
               motherOccupation: Yup.string(),
               spouseName: Yup.string(),
-              spouseAge: Yup.string(),
+              spouseAge: Yup.number().typeError("Must be a number "),
               spouseOccupation: Yup.string(),
               otherName: Yup.string(),
-              otherAge: Yup.string(),
+              otherAge: Yup.number().typeError("Must be a number "),
               otherOccupation: Yup.string(),
  
  
@@ -135,7 +135,6 @@ const PageThree = ({ onButtonClick }) => {
                               className="ml-5 mr-1 mt-5"
                             />
                             {relationship}
-                            {console.log(formik.values.showFatherDetails===true?"hello":false)}
                           </label>
                         ))}
                       </div>
