@@ -27,24 +27,25 @@ useEffect(()=>{
 },[])
 
 
+const  submitHandler = async(body) =>{
+  await axios.post('http://localhost:8280/user/createUser',body,
+  {
+   headers: {
+     cos_app_access_token: "FYy4tuaOC64uv-qZkzdC6jKBQLabF5kqU5JARliSB11_t4P7beK-3wCtbvUqlaa4C9zKU0XxQbjlJahFFxKZX8kBrCNGh4HJ7-UvRE3DdNxVGvvij6RwiiwojEvH1nmu3SC_CA"
+   }
+ }
+ )
+ .then(function (response) {
 
-  const  submitHandler = async(body) =>{
-     await axios.post('http://localhost:8280/user/createUser',body,
-     {
-      headers: {
-        cos_app_access_token: "FYy4tuaOC64uv-qZkzdC6jKBQLabF5kqU5JARliSB11_t4P7beK-3wCtbvUqlaa4C9zKU0XxQbjlJahFFxKZX8kBrCNGh4HJ7-UvRE3DdNxVGvvij6RwiiwojEvH1nmu3SC_CA"
-      }
-    }
-    )
-    .then(function (response) {
-    
-    response.data===2&&navigate('/login')
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-  }
-
+ response.data===200 && alert("New Registration successful")
+ })
+ .then(function(response) {
+   navigate('/login')
+ })
+ .catch(function (error) {
+   console.log(error);
+ });
+}
  
   return (
     <>
