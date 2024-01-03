@@ -16,7 +16,6 @@ import { useSelector } from "react-redux";
 const PageOne = ({ onButtonClick }) => {
   const userstatus = useSelector(selectLoggedInUser)
 
-console.log(userstatus);
 
  
 
@@ -78,7 +77,6 @@ console.log(userstatus);
               const temp = {id:userstatus.userId,...values}
               await postPersonalInfo(temp)
               onButtonClick("pagetwo")
-              console.log(temp);
             }}
           >
             {formik => (
