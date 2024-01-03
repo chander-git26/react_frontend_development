@@ -17,6 +17,8 @@ function Header() {
     }
     const formstatus = '39 61'
 
+    console.log(userstatus);
+
     return (
         <div className='border border-l-pink-300 shadow-md mx-auto w-full'>
             <div className="container flex justify-between m-auto h-[100px] items-center ">
@@ -52,8 +54,9 @@ function Header() {
                                     </g>
                                 </svg>
                                 <div>
-                                    <h1 className='text-sm font-bold'>{userstatus.lastName}</h1>
+                                    <Link to='/maindashboard'><h1 className='text-sm font-bold'>{userstatus.firstname}</h1></Link>
                                 </div>
+
 
                             </div>
                             <button className={primarybtn+''} onClick={() => { logoutHandler() }}><i class="bi bi-box-arrow-right"> Logout</i></button>

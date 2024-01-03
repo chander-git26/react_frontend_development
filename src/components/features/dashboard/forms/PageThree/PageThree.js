@@ -3,16 +3,24 @@ import "./PageThree.css";
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { inpLableSty, inputTextStyles2 } from "../../../../../utilities/styleclasses";
+import { postFamilyInfo } from "../../userInfoAPI";
+import { selectLoggedInUser } from "../../../auth/userSlice";
+import { useSelector } from "react-redux";
  
  
  
  
  
 const PageThree = ({ onButtonClick }) => {
+
+  const userstatus = useSelector(selectLoggedInUser)
+
+
   const showDetails = (type, value, formik) => {
     formik.setFieldValue(type, value);
     console.log(formik.values);
   };
+
  
   function updateCheckboxes(checkbox) {
     var checkboxes = document.getElementsByName('relationship');
@@ -86,7 +94,12 @@ const PageThree = ({ onButtonClick }) => {
             })}
             onSubmit={async (values) => {
               await new Promise((r) => setTimeout(r, 500));
-              alert(JSON.stringify(values));
+              const temp = {id:userstatus.userId,...values}
+              console.log(temp);
+              await postFamilyInfo(temp)
+
+
+
               onButtonClick("pagefour");
             }}
           >

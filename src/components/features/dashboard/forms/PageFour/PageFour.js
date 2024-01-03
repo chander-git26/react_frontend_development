@@ -50,15 +50,16 @@ const PageFour = ({ onButtonClick }) => {
               await new Promise((r) => setTimeout(r, 500));
               alert(JSON.stringify(values));
               const formData = new FormData();
-              formData.append("uploadBpReport", values.uploadBpReport);
-              formData.append("uploadDiabetesReport", values.uploadDiabetesReport);
-              formData.append("uploadHeartStrokeReport", values.uploadHeartStrokeReport);
-              formData.append("uploadDiabetesReport", values.uploadDiabetesReport);
-              formData.append("uploadOtherReport", values.uploadOtherReport);
+              formData.append("uploadBpReport", values.uploadBpReport?values.uploadBpReport:null);
+              formData.append("uploadDiabetesReport", values.uploadDiabetesReport?values.uploadDiabetesReport:null);
+              formData.append("uploadHeartStrokeReport", values.uploadHeartStrokeReport?values.uploadHeartStrokeReport:null);
+              formData.append("uploadOtherReport", values.uploadOtherReport?values.uploadOtherReport:null);
+              formData.append("uploadAsthmaReport", values.uploadAsthmaReport?values.uploadAsthmaReport:null);
               formData.append("id",user.userId );
               formData.append("pastSurgeries",values.pastSurgeries );
+              formData.append("pastSurgeries",values.pastSurgeries );
               formData.append("covidStatus",values.covidStatus );
-              formData.append("currentTreatments",values.currentTreatments );
+              formData.append("bloodGroup",values.bloodGroup );
               for (const keys of formData.entries()) {
                 console.log(keys);
               }

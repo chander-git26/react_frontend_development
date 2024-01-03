@@ -36,7 +36,7 @@ const navigate = useNavigate()
 
             <Formik
               initialValues={{
-                email: 'k.preetham@gmail.com',
+                email: 'k.subbarao@gmail.com',
                 password: 'A@sdf1234',
               
               }}
