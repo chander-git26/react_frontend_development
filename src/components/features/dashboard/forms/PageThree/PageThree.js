@@ -209,24 +209,29 @@ const PageThree = ({ onButtonClick }) => {
                           </label>
                           </div>
                             <div>
-                            {console.log(formik)}
-                          <input
-                            type="text"
-                            className={inputTextStyles2+' m-2'}
-                           
-                           
-                            id={`${relationship.toLowerCase()}Age`}
-                            name={`${relationship.toLowerCase()}Age`}
-                            onChange={formik.handleChange}
-                            value={formik.values[`${relationship.toLowerCase()}Age`]}
-                            required
-                            />
-                             {/* {formik.touched.relationship.toLowerCase()+"age" && formik.errors.relationship.toLowerCase()+"age" ? (
-                              <div className={errorText}><i className="bi bi-exclamation-circle"></i> {formik.errors.relationship.toLowerCase()+"age"}</div>
-                            ) : null} */}
-
-                            </div>
-                        </li>
+                            <input
+                                type="text"
+                                className={inputTextStyles2 + ' m-2'}
+                                id={`${relationship.toLowerCase()}Age`}
+                                name={`${relationship.toLowerCase()}Age`}
+                                onChange={(e) => {
+                                  // Handle input change and restrict to digits
+                                  const inputValue = e.target.value;
+                                  const numericValue = inputValue.replace(/\D/g, '');
+                                  formik.handleChange(e); // Update Formik state
+                                  formik.setFieldValue(`${relationship.toLowerCase()}Age`, numericValue); // Set numeric value
+                                }}
+                                value={formik.values[`${relationship.toLowerCase()}Age`]}
+                                required
+                              />
+                            
+                            {formik.touched[`${relationship.toLowerCase()}Age`] && formik.errors[`${relationship.toLowerCase()}Age`] ? (
+                                  <div className="">
+                                    <i className="bi bi-exclamation-circle"></i> {formik.errors[`${relationship.toLowerCase()}Age`]}
+                                  </div>
+                                ) : null}
+                              </div>
+                            </li>
  
                         <li className=" ">
                         <div>

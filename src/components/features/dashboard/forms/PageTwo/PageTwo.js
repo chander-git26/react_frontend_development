@@ -4,7 +4,6 @@ import { Field, Form, Formik } from "formik";
 import * as Yup from 'yup';
 import { errorText, inpLableSty, inputTextStyles2, inputTextStylesError } from "../../../../../utilities/styleclasses";
 import { gstRegExp } from "../../../../../utilities/constants";
-import { usePostUserProfessionMutation } from "../../../auth/userService";
 import { useSelector } from "react-redux";
 import { selectLoggedInUser } from "../../../auth/userSlice";
 import { postProfessionalInfo } from "../../userInfoAPI";
@@ -12,7 +11,6 @@ import { postProfessionalInfo } from "../../userInfoAPI";
 
 const PageTwo = ({ onButtonClick }) => {
   const user =  useSelector(selectLoggedInUser)
-  const [postProffession] =usePostUserProfessionMutation()
   console.log(user.email);
 
 
