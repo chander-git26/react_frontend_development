@@ -37,9 +37,9 @@ export const postFamilyInfo = async(body)=>{
             method: 'post',
             url: SAVE_FAMILY_BASEURL,
             headers:{
-                'Content-Type': 'application/json'
+                "Content-Type":'multipart/form-data'
             },
-            data:{...body}
+            data:body
           }
         )
 }

@@ -18,7 +18,7 @@ const PageThree = ({ onButtonClick }) => {
 
   const showDetails = (type, value, formik) => {
     formik.setFieldValue(type, value);
-    console.log(formik.values);
+   
   };
 
  
@@ -98,18 +98,18 @@ const PageThree = ({ onButtonClick }) => {
               console.log(temp);
 
               const formData = new FormData();
-              formData.append("fatherName", values.fatherName?values.fatherName:null);
-              formData.append("fatherAge", values.fatherAge?values.fatherAge:null);
-              formData.append("fatherOccupation", values.fatherOccupation?values.fatherOccupation:null);
-              formData.append("motherAge", values.motherAge?values.motherAge:null);
-              formData.append("motherName", values.motherName?values.motherName:null);
-              formData.append("motherOccupation", values.motherOccupation?values.motherOccupation:null);
-              formData.append("spouseName", values.spouseName?values.spouseName:null);
-              formData.append("spouseAge", values.spouseAge?values.spouseAge:null);
-              formData.append("spouseOccupation", values.spouseOccupation?values.spouseOccupation:null);
-              formData.append("otherName", values.otherName?values.otherName:null);
-              formData.append("otherAge", values.otherAge?values.otherAge:null);
-              formData.append("otherOccupation", values.otherOccupation?values.otherOccupation:null);
+              formData.append("fatherName", values.fatherName);
+              formData.append("fatherAge", values.fatherAge);
+              formData.append("fatherOccupation", values.fatherOccupation);
+              formData.append("motherAge", values.motherAge);
+              formData.append("motherName", values.motherName);
+              formData.append("motherOccupation", values.motherOccupation);
+              formData.append("spouseName", values.spouseName);
+              formData.append("spouseAge", values.spouseAge);
+              formData.append("spouseOccupation", values.spouseOccupation);
+              formData.append("otherName", values.otherName);
+              formData.append("otherAge", values.otherAge);
+              formData.append("otherOccupation", values.otherOccupation);
               formData.append("id",userstatus.userId );
               for (const keys of formData.entries()) {
                 console.log(keys);
@@ -209,6 +209,7 @@ const PageThree = ({ onButtonClick }) => {
                           </label>
                           </div>
                             <div>
+                            {console.log(formik)}
                           <input
                             type="text"
                             className={inputTextStyles2+' m-2'}
