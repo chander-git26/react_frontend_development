@@ -57,7 +57,7 @@ const PageFour = ({ onButtonClick }) => {
               formData.append("uploadAsthmaReport", values.uploadAsthmaReport?values.uploadAsthmaReport:null);
               formData.append("id",user.userId );
               formData.append("pastSurgeries",values.pastSurgeries );
-              formData.append("pastSurgeries",values.pastSurgeries );
+              formData.append("currentTreatments",values.currentTreatments );
               formData.append("covidStatus",values.covidStatus );
               formData.append("bloodGroup",values.bloodGroup );
               for (const keys of formData.entries()) {
