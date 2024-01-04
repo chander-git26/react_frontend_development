@@ -19,7 +19,7 @@ const Login = () => {
 
 const userdata = useSelector(selectLoggedInUser)  
 
- const [authUser] = useLazyGetUserDataQuery()
+const [authUser] = useLazyGetUserDataQuery()
 console.log(userdata);
 
 const dispatch = useDispatch()
@@ -47,13 +47,8 @@ const navigate = useNavigate()
               })}
               onSubmit={async (values) => {
                 console.log(values);
-                try{
-
-                  await authUser(values).then(res=>dispatch(addUserData(res.data.data))).catch(err=>console.log(err))
-                }
-                catch(e){
-                  console.log(e);
-                }
+       
+                  await authUser(values).then(res=>{dispatch(addUserData(res.data.data))}).then(res=>console.log(res))
                 
                 navigate('/dashboard')
               }}
