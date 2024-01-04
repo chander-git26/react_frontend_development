@@ -7,8 +7,6 @@ const MainDashboard = () => {
   return (
     <div className=' flex-1  container mx-auto '>
      <UserDashboard/>
-        
-    
     </div>
   )
 }

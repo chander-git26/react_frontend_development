@@ -36,7 +36,6 @@ const  submitHandler = async(body) =>{
  }
  )
  .then(function (response) {
-
  response.data===200 && alert("New Registration successful")
  })
  .then(function(response) {
