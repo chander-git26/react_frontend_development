@@ -13,6 +13,8 @@ import DashboardPage from './components/pages/DashboardPage';
 import ForgotPasswordPage from './components/pages/ForgotPasswordPage';
 import MainDashboard from './components/features/dashboard/MainDashboard';
 import UserDashboard from './components/features/dashboard/userdshboard/UserDashboard';
+import UserDashboardpage from './components/pages/UserDashboardpage';
+import UserPersonal from './components/features/dashboard/userdshboard/userDetails/UserPersonal';
 
 const router = createBrowserRouter([
 
@@ -55,8 +57,12 @@ const router = createBrowserRouter([
           <Protected>
             <MainDashboard/>
           </Protected>,
-      
-          
+      },
+      {
+        path:'/userdashboard',
+        element:
+        <Protected><UserDashboardpage/></Protected>,
+       
       }
     ]
   }

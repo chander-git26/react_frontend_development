@@ -55,7 +55,7 @@ function Header() {
                                     </g>
                                 </svg>
                                 <div>
-                                    <Link to='/maindashboard'><h1 className='text-sm font-bold'>{userstatus.firstname}</h1></Link>
+                                    <Link to='/userdashboard'><h1 className='text-sm font-bold'>{userstatus.firstname}</h1></Link>
                                 </div>
 
 

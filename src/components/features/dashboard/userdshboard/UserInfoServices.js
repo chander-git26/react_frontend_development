@@ -12,14 +12,13 @@ export const userApi = createApi({
         body:{...body}
       }),
     }),
-    postUserProfession: builder.mutation({
+    getPersonalDetails: builder.mutation({
       query: (body) => ({
-        url: `/users/${body.id}`,
-        method: 'PATCH',
-        body:{...body.profession}
+        url: `/users/getPersonalInfo/${body.id}`,
+        method: 'GET',
       }),
     }),
   }),
 })
  
-export const { useGetUserDataQuery,useLazyGetUserDataQuery,usePostUserProfessionMutation } = userApi
+export const { useGetUserDataQuery,useLazyGetUserDataQuery,getPersonalDetails } = userApi
