@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addUserData, selectLoggedInUser } from '../userSlice';
 import { inpLableSty,errorText, inputTextStyles2, inputTextStylesError } from '../../../../utilities/styleclasses';
 import LoginSideconent from '../../../content/LoginSidecontent'
+import { userApi } from '../userService';
 
 
 
@@ -45,12 +46,22 @@ const navigate = useNavigate()
       
 
               })}
+              
               onSubmit={async (values) => {
                 console.log(values);
-       
-                  await authUser(values).then(res=>{dispatch(addUserData(res.data.data))}).then(res=>console.log(res))
-                
-                navigate('/dashboard')
+                try {
+                  const response = await authUser(values);
+                  console.log(response);
+                  
+                  if (userApi.endpoints.getUserData.select(response)) {
+                    dispatch(addUserData(response.data.data));
+                    navigate('/dashboard');
+                  } else {
+                    console.error('Unexpected response structure:', response);
+                  }
+                } catch (error) {
+                  console.error('API call error:', error);
+                }
               }}
             >
               {formik => (
